@@ -1,0 +1,50 @@
+<p style="margin: 0 0 16px;">The Exsited API lets your own software read and change your Exsited data: accounts, orders, invoices, payments, items, purchasing, work and settings. This article explains what the API is, which tools you can use with it, and where to find the full developer documentation.</p>
+
+<p style="margin: 0 0 24px;"><a href="https://exsited.mintlify.app/introduction" style="font-weight: 700;">Open the developer documentation</a></p>
+
+<h2 style="margin: 32px 0 12px;">Who this is for</h2>
+
+<p style="margin: 0 0 16px;">The API is for developers building an integration with Exsited, for example creating accounts from a sign-up form, syncing orders and invoices with another system, or reading payments into a reporting tool. You do not need the API to use Exsited day to day; the same work can be done in the Exsited app.</p>
+
+<h2 style="margin: 32px 0 12px;">Two ways to use it</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 0 0 20px; border: 1px solid #dfe3eb;">
+  <thead>
+    <tr>
+      <th style="text-align: left; font-weight: 700; padding: 8px 12px; background-color: #f5f8fa; border-bottom: 1px solid #dfe3eb;">Option</th>
+      <th style="text-align: left; font-weight: 700; padding: 8px 12px; background-color: #f5f8fa; border-bottom: 1px solid #dfe3eb;">Best for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #dfe3eb; vertical-align: top;"><strong>An SDK</strong><br><span style="font-size: 0.9em; margin: 0 0 16px;">Python, JavaScript, PHP, Java, .NET, Dart or Go</span></td>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #dfe3eb; vertical-align: top;">Most integrations. The SDK gets and renews the access token for you, sends your request body as JSON and gives you the JSON response back. The functions are the same in all seven languages.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #dfe3eb; vertical-align: top;"><strong>The REST API directly</strong><br><span style="font-size: 0.9em; margin: 0 0 16px;">Any language, or cURL</span></td>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #dfe3eb; vertical-align: top;">A language without an SDK, or a quick one-off call. You request an access token yourself and send it with each request.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="margin: 32px 0 12px;">Get started</h2>
+
+<p style="margin: 0 0 10px;"><span style="display: inline-block; min-width: 1.6em; font-weight: 700;">1</span><strong>Get your API credentials.</strong> You need your API base URL, client ID, client secret and redirect URI. Your Exsited contact can provide them. <a href="https://exsited.mintlify.app/authentication">Authentication</a> explains each one.</p>
+<p style="margin: 0 0 10px;"><span style="display: inline-block; min-width: 1.6em; font-weight: 700;">2</span><strong>Install the SDK for your language.</strong> See <a href="https://exsited.mintlify.app/installation">Installation</a>.</p>
+<p style="margin: 0 0 10px;"><span style="display: inline-block; min-width: 1.6em; font-weight: 700;">3</span><strong>Make your first call.</strong> <a href="https://exsited.mintlify.app/authentication">Authentication</a> shows how to set up a client in every language, and every endpoint page shows the call in all seven SDKs and cURL.</p>
+
+<div style="background-color: #fdf8ee; border-left: 3px solid #c98a00; padding: 12px 16px; margin: 0 0 20px;">
+  <p style="font-weight: 700; margin: 0 0 4px;">Keep your credentials private</p>
+  <p style="margin: 0;">The client secret gives access to your Exsited data through the API. Keep it in an environment variable or a secrets manager, never in source code or a shared document.</p>
+</div>
+
+<div style="background-color: #f0f6fb; border-left: 3px solid #2f7ebc; padding: 12px 16px; margin: 0 0 20px;">
+  <p style="font-weight: 700; margin: 0 0 4px;">One running app per set of credentials</p>
+  <p style="margin: 0;">A new access token for the same credentials ends the previous one. If two apps share one set of credentials, they keep signing each other out. Give each app its own credentials.</p>
+</div>
+
+<h2 style="margin: 32px 0 12px;">Related articles</h2>
+
+<ul style="margin: 0 0 16px; padding-left: 24px;">
+  <li style="margin: 0 0 6px;">Installing the Exsited SDKs</li>
+</ul>
