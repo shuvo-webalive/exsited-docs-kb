@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exsited knowledge base articles</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2f4f7;
+    --ink: #18222e;
+    --muted: #5a6776;
+    --panel: #ffffff;
+    --line: #d5dce4;
+    --accent: #f47521;
+    --accent-ink: #b8501a;
+    --done: #3f8f99;
+    --done-soft: #e3f1f2;
+    --warn-soft: #fff1e6;
+    --font: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 18px 32px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand img { display: block; height: 26px; width: auto; }
+  .top h1 {
+    margin: 0;
+    padding-left: 16px;
+    border-left: 1px solid var(--line);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .top p { margin: 0; color: var(--muted); font-size: 14px; }
+  .top code { font-size: 13px; color: var(--ink); }
+
+  .notice {
+    margin: 0;
+    padding: 12px 32px;
+    background: var(--warn-soft);
+    border-bottom: 1px solid #f4c9aa;
+    font-size: 14px;
+  }
+  .notice strong { color: var(--accent-ink); }
+
+  .desk { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: calc(100vh - 64px); }
+
+  .list { border-right: 1px solid var(--line); padding: 24px 16px; }
+  .search {
+    width: 100%;
+    margin: 0 0 16px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+    color: var(--ink);
+    font: inherit;
+    font-size: 15px;
+  }
+  .list h2 { margin: 16px 12px 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .list ul { list-style: none; margin: 0; padding: 0; }
+  .list button {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 8px;
+    width: 100%;
+    margin: 0 0 4px;
+    padding: 11px 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .list button:hover { background: #e8ecf1; }
+  .list button[aria-current="true"] { background: var(--panel); border-color: var(--line); }
+  .list .name { font-weight: 600; line-height: 1.35; }
+  .list .kind { display: block; font-size: 13px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+  .list .tick { width: 18px; height: 18px; color: var(--done); visibility: hidden; margin-top: 2px; }
+  .list button.copied .tick { visibility: visible; }
+  .empty { margin: 8px 12px; color: var(--muted); font-size: 14px; }
+
+  .work { padding: 28px 40px 64px; max-width: 1180px; }
+  .head h2 { margin: 0 0 18px; font-size: 30px; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; }
+
+  .fields { display: grid; gap: 10px; margin: 0 0 24px; }
+  .field {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 12px 10px 16px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .field dt { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .field dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+  .field .meta { color: var(--muted); font-weight: 400; font-size: 14px; }
+
+  .copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+  .copy:hover { border-color: var(--muted); }
+  .copy svg { width: 16px; height: 16px; }
+  .copy.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .copy.primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+  .copy.done { background: var(--done); border-color: var(--done); color: #fff; }
+
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 28px;
+    padding: 0;
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 12px 14px 12px 48px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 12px;
+    top: 11px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    display: grid;
+    place-items: center;
+  }
+  .status { min-height: 22px; margin: -18px 0 12px; font-weight: 600; color: var(--done); font-size: 14px; }
+
+  .frame { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .frame .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .view { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .view button { padding: 4px 12px; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; }
+  .view button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .frame iframe { display: block; width: 100%; min-height: 600px; border: 0; }
+  .code {
+    display: none;
+    margin: 0;
+    padding: 20px 24px;
+    max-height: 760px;
+    overflow: auto;
+    background: #1f2d3d;
+    color: #e6edf3;
+    font: 13px/1.55 Consolas, Menlo, monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .frame.source .code { display: block; }
+  .frame.source iframe { display: none; }
+  textarea.clip { position: absolute; left: -9999px; top: 0; }
+
+  @media (max-width: 900px) {
+    .desk { grid-template-columns: 1fr; }
+    .list { border-right: 0; border-bottom: 1px solid var(--line); }
+    .work { padding: 24px 20px 48px; }
+    .steps { grid-template-columns: 1fr; }
+    .field { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .copy { transition: none; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img src="assets/exsited-logo.svg" alt="Exsited" width="154" height="35">
+    <h1>Knowledge base articles</h1>
+  </div>
+  <p>Links point to <code id="base"></code></p>
+</header>
+<p class="notice" id="placeholder" hidden><strong>Links point at a placeholder address.</strong> Set <code>mintlify_base</code> in <code>config.json</code> to the live documentation address and rebuild before pasting.</p>
+
+<main class="desk">
+  <nav class="list" aria-label="Articles">
+    <input class="search" id="search" type="search" placeholder="Search articles" aria-label="Search articles">
+    <h2>Category</h2>
+    <ul id="category-list"></ul>
+    <h2 id="count"></h2>
+    <ul id="articles"></ul>
+    <p class="empty" id="empty" hidden>No article matches. Try a shorter word.</p>
+  </nav>
+
+  <section class="work" aria-live="polite">
+    <div class="head"><h2 id="title"></h2></div>
+    <dl class="fields" id="fields"></dl>
+    <ol class="steps" id="steps"></ol>
+    <p class="status" id="status" role="status"></p>
+
+    <div class="frame" id="frame">
+      <div class="bar">
+        <div class="view" role="group" aria-label="View">
+          <button type="button" id="view-preview" aria-pressed="true">Knowledge base preview</button>
+          <button type="button" id="view-source" aria-pressed="false">HTML</button>
+        </div>
+        <span>How it will look in the HubSpot knowledge base</span>
+      </div>
+      <iframe id="preview" title="Knowledge base preview" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+      <pre class="code" id="code"></pre>
+    </div>
+    <textarea class="clip" id="clip" aria-hidden="true" tabindex="-1"></textarea>
+  </section>
+</main>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  const data = JSON.parse(document.getElementById('data').textContent);
+  const copied = new Set(JSON.parse(sessionStorage.getItem('kb-copied') || '[]'));
+  const logo = new URL('assets/exsited-logo.svg', location.href).href;
+  const COPY_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  const TICK = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+
+  const entries = [{ kind: 'category', id: 'category', title: data.category.name, category: data.category }]
+    .concat(data.articles.map(a => Object.assign({ kind: 'article', id: a.file }, a)));
+  const buttons = [];
+  let current = 1;
+
+  document.getElementById('base').textContent = data.base;
+  document.getElementById('placeholder').hidden = !data.placeholder;
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  }
+
+  function listButton(entry, index) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.innerHTML = '<span><span class="name"></span><span class="kind"></span></span>' + TICK;
+    button.querySelector('.name').textContent = entry.title;
+    button.querySelector('.kind').textContent = entry.kind === 'category' ? 'Category page' : data.category.name;
+    button.classList.toggle('copied', copied.has(entry.id));
+    button.addEventListener('click', () => show(index));
+    const item = document.createElement('li');
+    item.appendChild(button);
+    buttons[index] = button;
+    return item;
+  }
+
+  entries.forEach((entry, index) => {
+    document.getElementById(entry.kind === 'category' ? 'category-list' : 'articles').appendChild(listButton(entry, index));
+  });
+
+  function countLabel(shown) {
+    const total = data.articles.length;
+    return shown === total ? total + (total === 1 ? ' article' : ' articles') : shown + ' of ' + total + ' articles';
+  }
+  document.getElementById('count').textContent = countLabel(data.articles.length);
+
+  const KB_CSS = `
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Open Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#333;background:#fff}
+    a{color:#c75b17;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .kb-top{display:flex;align-items:center;justify-content:space-between;padding:22px 32px}
+    .kb-brand{display:flex;align-items:flex-end;gap:10px}
+    .kb-brand img{height:34px}
+    .kb-brand span{font-size:15px;color:#555;padding-bottom:2px}
+    .kb-go{background:#f47521;color:#fff;font-weight:600;font-size:15px;padding:10px 20px;border-radius:999px}
+    .kb-go:hover{text-decoration:none;background:#c75b17}
+    .kb-hero{background:#f2f2f2;padding:56px 32px 60px}
+    .kb-hero-in{max-width:1000px;margin:0 auto}
+    .kb-hero h2{margin:0 0 16px;font-size:34px;line-height:1.2;font-weight:700;color:#222}
+    .kb-search{display:flex;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+    .kb-search input{flex:1;border:0;padding:12px 14px;font:inherit;font-size:15px;color:#333;outline:none}
+    .kb-search span{width:40px;display:grid;place-items:center;background:#e6eaee;color:#333}
+    .kb-wrap{max-width:1000px;margin:0 auto;padding:0 0 32px}
+    .kb-crumbs{padding:16px 0 28px;font-size:15px}
+    .kb-crumbs .sep{color:#555;margin:0 10px}
+    .kb-cols{display:grid;grid-template-columns:240px minmax(0,1fr);gap:0}
+    .kb-side{padding-right:24px;border-right:1px solid #e5e5e5}
+    .kb-side a{display:block;padding:9px 10px;font-size:15px}
+    .kb-side a.on{background:#fdefe6;color:#b8501a}
+    .kb-side .sub a{padding:6px 10px 6px 22px;font-size:14px;color:#555}
+    .kb-side .sub a.on{background:none;color:#b8501a;font-weight:600}
+    .kb-main{padding:0 0 0 32px;min-width:0}
+    .kb-main h1{margin:0 0 6px;font-size:32px;line-height:1.35;font-weight:700;color:#333}
+    .kb-sub{margin:0 0 22px;font-size:15px;font-style:italic;color:#666}
+    .kb-body h2{font-size:22px;line-height:1.35;font-weight:600;color:#333}
+    .kb-body h3{font-size:18px;line-height:1.4;font-weight:600;color:#333}
+    .kb-body ul,.kb-body ol{padding-left:26px}
+    .kb-body table{font-size:15px}
+    .kb-help{display:flex;align-items:center;gap:14px;margin:36px 0 0;padding:18px 0;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;font-size:15px}
+    .kb-help span{display:inline-block;padding:5px 22px;background:#e6eaee;border-radius:3px;font-size:13px}
+    .kb-list{list-style:none;margin:18px 0 0;padding:0 0 18px;border-bottom:1px solid #e5e5e5}
+    .kb-list li{margin:0 0 10px}
+    .kb-foot{display:flex;justify-content:space-between;align-items:center;margin-top:36px;padding-top:26px;border-top:1px solid #e5e5e5;font-size:14px;color:#555}
+    .kb-foot nav{display:flex;gap:22px}
+    .kb-foot nav a{color:#555}
+  `;
+
+  function kbPage(entry) {
+    const cat = data.category;
+    const sub = data.articles.map(a => '<a href="#"' + (entry.id === a.file ? ' class="on"' : '') + '>' + escapeHtml(a.title) + '</a>').join('');
+    const crumbs = '<a href="#">Help Center</a><span class="sep">&gt;</span><a href="#">' + escapeHtml(cat.name) + '</a>'
+      + (entry.kind === 'article' ? '<span class="sep">&gt;</span><span>' + escapeHtml(entry.title) + '</span>' : '');
+    const main = entry.kind === 'category'
+      ? '<h1>' + escapeHtml(cat.name) + '</h1><p>' + escapeHtml(cat.description) + '</p><ul class="kb-list">'
+        + data.articles.map(a => '<li><a href="#">' + escapeHtml(a.title) + '</a></li>').join('') + '</ul>'
+      : '<h1>' + escapeHtml(entry.title) + '</h1><p class="kb-sub">' + escapeHtml(entry.subtitle) + '</p><div class="kb-body">' + entry.html + '</div>'
+        + '<div class="kb-help">Was this article helpful? <span>Yes</span><span>No</span></div>';
+    return '<!doctype html><html><head><meta charset="utf-8"><base target="_blank">'
+      + '<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">'
+      + '<style>' + KB_CSS + '</style></head><body>'
+      + '<header class="kb-top"><div class="kb-brand"><img src="' + logo + '" alt="Exsited"><span>Help Center</span></div><a class="kb-go" href="#">Go to Exsited</a></header>'
+      + '<section class="kb-hero"><div class="kb-hero-in"><h2>How can we help?</h2><div class="kb-search"><input placeholder="Search" disabled><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span></div></div></section>'
+      + '<div class="kb-wrap"><nav class="kb-crumbs">' + crumbs + '</nav><div class="kb-cols">'
+      + '<aside class="kb-side"><a href="#" class="on">' + escapeHtml(cat.name) + '</a><div class="sub">' + sub + '</div></aside>'
+      + '<main class="kb-main">' + main + '</main></div>'
+      + '<footer class="kb-foot"><span>&copy; ' + new Date().getFullYear() + ' Exsited. All rights reserved.</span><nav><a href="#">Privacy</a><a href="#">Terms</a></nav></footer></div>'
+      + '</body></html>';
+  }
+
+  function field(label, value, meta, copyLabel, copyValue, primary) {
+    return '<div class="field"><dt>' + label + '</dt><dd>' + (value ? escapeHtml(value) : '') + (meta ? ' <span class="meta">' + escapeHtml(meta) + '</span>' : '') + '</dd>'
+      + '<button type="button" class="copy' + (primary ? ' primary' : '') + '" data-copy="' + copyValue + '" data-label="' + copyLabel + '">' + COPY_ICON + '<span>' + copyLabel + '</span></button></div>';
+  }
+
+  function show(index) {
+    current = index;
+    const entry = entries[index];
+    buttons.forEach((button, at) => button.setAttribute('aria-current', at === index ? 'true' : 'false'));
+    document.getElementById('title').textContent = entry.title;
+    const fields = document.getElementById('fields');
+    const steps = document.getElementById('steps');
+    if (entry.kind === 'category') {
+      fields.innerHTML = field('Name', entry.category.name, '', 'Copy name', 'name', false)
+        + field('Description', entry.category.description, '', 'Copy description', 'description', false);
+      steps.innerHTML = '<li>In HubSpot, open <strong>Knowledge base settings</strong> and go to <strong>Categories</strong>.</li>'
+        + '<li>Create a category and paste the <strong>name</strong> and <strong>description</strong>.</li>'
+        + '<li>Save. Articles filed in this category are listed on its page automatically.</li>';
+      document.getElementById('code').textContent = entry.category.name + '\n\n' + entry.category.description;
+    } else {
+      fields.innerHTML = field('Title', entry.title, '', 'Copy title', 'title', false)
+        + field('Subtitle', entry.subtitle, '', 'Copy subtitle', 'subtitle', false)
+        + field('Category', data.category.name, '', 'Copy category', 'categoryName', false)
+        + field('Body', '', Math.max(1, Math.round(entry.size / 1024)) + ' KB of HTML', 'Copy HTML', 'html', true);
+      steps.innerHTML = '<li>In HubSpot, create an article in <strong>' + escapeHtml(data.category.name) + '</strong>. Paste the <strong>title</strong> and <strong>subtitle</strong>.</li>'
+        + '<li>In the body toolbar, open <strong>Source code</strong>.</li>'
+        + '<li>Paste the <strong>HTML</strong>, save, then preview before you publish.</li>';
+      document.getElementById('code').textContent = entry.html;
+    }
+    fields.querySelectorAll('.copy').forEach(button => button.addEventListener('click', () => copyField(button)));
+    document.getElementById('status').textContent = '';
+    document.getElementById('preview').srcdoc = kbPage(entry);
+  }
+
+  async function writeText(value) {
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch (error) {
+      const clip = document.getElementById('clip');
+      clip.value = value;
+      clip.select();
+      document.execCommand('copy');
+    }
+  }
+
+  async function copyField(button) {
+    const entry = entries[current];
+    const key = button.dataset.copy;
+    const value = key === 'categoryName' ? data.category.name
+      : entry.kind === 'category' ? entry.category[key] : entry[key];
+    await writeText(value);
+    button.classList.add('done');
+    button.querySelector('span').textContent = 'Copied';
+    if (key === 'html') {
+      copied.add(entry.id);
+      sessionStorage.setItem('kb-copied', JSON.stringify([...copied]));
+      buttons[current].classList.add('copied');
+      document.getElementById('status').textContent = 'Copied. Paste it into the Source code view in HubSpot.';
+    }
+    setTimeout(() => {
+      button.classList.remove('done');
+      button.querySelector('span').textContent = button.dataset.label;
+    }, 2000);
+  }
+
+  document.getElementById('preview').addEventListener('load', (event) => {
+    const frame = event.target;
+    const doc = frame.contentDocument;
+    const fit = () => { frame.style.height = doc.documentElement.scrollHeight + 'px'; };
+    fit();
+    new ResizeObserver(fit).observe(doc.body);
+    if (doc.fonts) doc.fonts.ready.then(fit);
+  });
+
+  function setView(source) {
+    document.getElementById('frame').classList.toggle('source', source);
+    document.getElementById('view-preview').setAttribute('aria-pressed', String(!source));
+    document.getElementById('view-source').setAttribute('aria-pressed', String(source));
+  }
+  document.getElementById('view-preview').addEventListener('click', () => setView(false));
+  document.getElementById('view-source').addEventListener('click', () => setView(true));
+
+  document.getElementById('search').addEventListener('input', (event) => {
+    const words = event.target.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    entries.forEach((entry, index) => {
+      if (entry.kind !== 'article') return;
+      const haystack = (entry.title + ' ' + entry.subtitle + ' ' + entry.summary).toLowerCase();
+      const match = words.every(word => haystack.includes(word));
+      buttons[index].parentElement.hidden = !match;
+      if (match) shown += 1;
+    });
+    document.getElementById('count').textContent = countLabel(shown);
+    document.getElementById('empty').hidden = shown !== 0;
+  });
+
+  show(current);
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "category": {
+    "name": "Exsited API",
+    "description": "Technical documentation to connect your software to Exsited"
+  },
+  "articles": [
+    {
+      "file": "01-exsited-api.html",
+      "title": "Getting started with the Exsited API",
+      "subtitle": "Connect your software to Exsited with the API or one of seven SDKs",
+      "summary": "What the API is, which tools you can use with it, and where the full documentation is."
+    },
+    {
+      "file": "02-installing-the-sdks.html",
+      "title": "Installing the Exsited SDKs",
+      "subtitle": "What each SDK needs, and how to add it to your project",
+      "summary": "What each SDK needs, how installation works, and fixes for common problems."
+    }
+  ]
+}
