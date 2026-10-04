@@ -50,6 +50,13 @@
       "subtitle": "Manage the people you book, the work they do and the time they spend",
       "summary": "The 69 endpoints for labours, tasks, timesheets, milestones, employees, departments, designations, teams and time periods, the tasks they cover and what to watch for.",
       "area": "Work and people"
+    },
+    {
+      "file": "08-workflows-approvals-and-alerts.html",
+      "title": "Working with workflows, approvals and alerts through the API",
+      "subtitle": "Control how records move through your processes and who signs them off",
+      "summary": "The 71 endpoints for workflows, events, approvals, alerts, action scripts and notes, the tasks they cover and what to watch for.",
+      "area": "Workflows, approvals and alerts"
     }
   ]
 }
