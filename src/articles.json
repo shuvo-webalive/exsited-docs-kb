@@ -22,6 +22,13 @@
       "subtitle": "Create and manage customers and suppliers, their contacts, groups and messages",
       "summary": "The 77 endpoints for accounts, account emails, account groups, communications and communication profiles, the tasks they cover and what to watch for.",
       "area": "Accounts"
+    },
+    {
+      "file": "04-sales.html",
+      "title": "Working with orders, invoices and payments through the API",
+      "subtitle": "Take orders, bill for them and record the money that comes in or goes back",
+      "summary": "The 165 endpoints for orders, quotes, usage, invoices, payments, credit notes, refunds and gift certificates, the tasks they cover and what to watch for.",
+      "area": "Sales"
     }
   ]
 }

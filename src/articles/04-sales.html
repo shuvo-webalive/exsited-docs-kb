@@ -1,0 +1,156 @@
+<p style="{{style:lead}}">The sales APIs let your software handle what your accounts buy and pay for. You can create and change orders, quotes and contracts, record usage on metered lines, raise and amend invoices and pro-forma invoices, record payments, issue credit notes and refunds, and manage gift certificates and sales reps. You can also read credit note applications and the payments and refunds in a bank reconciliation. All one hundred and sixty-five endpoints are available in all seven Exsited SDKs.</p>
+
+<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/orders" style="{{style:button}}">Open the Orders reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/invoices" style="{{style:button}}">Open the Invoices reference</a></p>
+
+<h2 style="{{style:h2}}">Common tasks</h2>
+
+<table style="{{style:table}}">
+  <thead>
+    <tr>
+      <th style="{{style:th}}">You want to</th>
+      <th style="{{style:th}}">Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="{{style:td}}">Take an order for an account</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/orders/create-an-order" style="{{style:a}}">Create an order</a> with the account's <code style="{{style:code}}">id</code> as <code style="{{style:code}}">account_id</code> and at least one line naming an item, inside <code style="{{style:code}}">order</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Create an active order and its invoice in one call</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/express/create-an-express-order" style="{{style:a}}">Create an express order</a>, naming the account by <code style="{{style:code}}">id</code> and putting the order under <code style="{{style:code}}">account.order</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Check the price of an order before you create it</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/orders/preview-an-order" style="{{style:a}}">Preview an order</a> with the same body as a new order. No order is created</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Turn an accepted quote into an order</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/orders/convert-a-quote-to-an-order" style="{{style:a}}">Convert a quote to an order</a> with an empty body. The new order has its own <code style="{{style:code}}">id</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Record how much of a metered item a customer used</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/usages/create-usages" style="{{style:a}}">Create usages</a> with the order line's <code style="{{style:code}}">id</code> as <code style="{{style:code}}">charge_item_id</code> and the billing period as <code style="{{style:code}}">charging_period</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add, change or remove lines on an invoice</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/invoices/amend-an-invoice" style="{{style:a}}">Amend an invoice</a>, giving each entry in <code style="{{style:code}}">invoice.lines</code> an <code style="{{style:code}}">op</code> of <code style="{{style:code}}">add</code>, <code style="{{style:code}}">change</code> or <code style="{{style:code}}">remove</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Record a payment against one or more invoices</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/payments/create-a-payment" style="{{style:a}}">Create a payment</a> with the invoices it pays and the money received, inside <code style="{{style:code}}">payment</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Credit an invoice, then pay the credit back</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/credit-notes/create-a-credit-note" style="{{style:a}}">Create a credit note</a> with <code style="{{style:code}}">invoice_id</code> and <code style="{{style:code}}">amount</code>, then <a href="{{MINTLIFY}}/api-reference/refunds/create-a-refund-from-a-credit-note" style="{{style:a}}">Create a refund from a credit note</a> with an <code style="{{style:code}}">amount</code> and a <code style="{{style:code}}">payment_method</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="{{style:h2}}">All endpoints</h2>
+
+<h3 style="{{style:h3}}">Orders</h3>
+
+<p style="{{style:p}}">These endpoints create and read orders, quotes and contracts, change their lines and billing, move them through their states and manage their notes and files, and the <a href="{{MINTLIFY}}/orders" style="{{style:a}}">Orders overview</a> explains each one.</p>
+
+{{endpoints:orders}}
+
+<h3 style="{{style:h3}}">Quote orders</h3>
+
+<p style="{{style:p}}">This endpoint lists the invoices raised from a quote, and the <a href="{{MINTLIFY}}/quote-orders" style="{{style:a}}">Quote orders overview</a> explains it.</p>
+
+{{endpoints:quote_orders}}
+
+<h3 style="{{style:h3}}">Express</h3>
+
+<p style="{{style:p}}">This endpoint creates an active order, its lines and its invoice for an existing account in one request, and the <a href="{{MINTLIFY}}/express" style="{{style:a}}">Express overview</a> explains it.</p>
+
+{{endpoints:express}}
+
+<h3 style="{{style:h3}}">Usages</h3>
+
+<p style="{{style:p}}">These endpoints record usage against metered order lines, one at a time or several at once, and list, read, change and delete it, and the <a href="{{MINTLIFY}}/usages" style="{{style:a}}">Usages overview</a> explains each one.</p>
+
+{{endpoints:usages}}
+
+<h3 style="{{style:h3}}">Sales reps</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the people you can name as the sales rep on an account or order, and the <a href="{{MINTLIFY}}/sales-reps" style="{{style:a}}">Sales reps overview</a> explains each one.</p>
+
+{{endpoints:sales_reps}}
+
+<h3 style="{{style:h3}}">Gift certificates</h3>
+
+<p style="{{style:p}}">These endpoints create, read, update and delete gift certificates, set a new balance, allocate a certificate to an account or take it back, and read its allocations and transactions, and the <a href="{{MINTLIFY}}/gift-certificates" style="{{style:a}}">Gift certificates overview</a> explains each one.</p>
+
+{{endpoints:gift_certificates}}
+
+<h3 style="{{style:h3}}">Invoices</h3>
+
+<p style="{{style:p}}">These endpoints create, read, amend, cancel, reactivate and delete invoices and read their lines, KPIs, PDF links, notes, files, fulfillments and returns, and the <a href="{{MINTLIFY}}/invoices" style="{{style:a}}">Invoices overview</a> explains each one.</p>
+
+{{endpoints:invoices}}
+
+<h3 style="{{style:h3}}">Pro-forma invoices</h3>
+
+<p style="{{style:p}}">These endpoints list, read and delete pro-forma invoices, the advance bills sent before a final invoice, and record a payment against one, and the <a href="{{MINTLIFY}}/pro-forma-invoices" style="{{style:a}}">Pro-forma invoices overview</a> explains each one.</p>
+
+{{endpoints:proforma_invoices}}
+
+<h3 style="{{style:h3}}">Payments</h3>
+
+<p style="{{style:p}}">These endpoints create, read, update and delete payments, list them by invoice or order and manage their notes and files, and the <a href="{{MINTLIFY}}/payments" style="{{style:a}}">Payments overview</a> explains each one.</p>
+
+{{endpoints:payments}}
+
+<h3 style="{{style:h3}}">Refunds</h3>
+
+<p style="{{style:p}}">These endpoints create a refund from a credit note, read, update and delete refunds and manage their notes and files, and the <a href="{{MINTLIFY}}/refunds" style="{{style:a}}">Refunds overview</a> explains each one.</p>
+
+{{endpoints:refunds}}
+
+<h3 style="{{style:h3}}">Credit notes</h3>
+
+<p style="{{style:p}}">These endpoints create, read, update, apply and delete credit notes, read their balance items and applications and manage their notes and files, and the <a href="{{MINTLIFY}}/credit-notes" style="{{style:a}}">Credit notes overview</a> explains each one.</p>
+
+{{endpoints:credit_notes}}
+
+<h3 style="{{style:h3}}">Credit note applications</h3>
+
+<p style="{{style:p}}">These endpoints read the records of credit notes applied to invoices, across all invoices or for one invoice, and the <a href="{{MINTLIFY}}/credit-note-applications" style="{{style:a}}">Credit note applications overview</a> explains each one.</p>
+
+{{endpoints:credit_note_applications}}
+
+<h3 style="{{style:h3}}">Reconciliations</h3>
+
+<p style="{{style:p}}">These endpoints list the payments and the refunds included in one bank reconciliation, and the <a href="{{MINTLIFY}}/reconciliations" style="{{style:a}}">Reconciliations overview</a> explains each one.</p>
+
+{{endpoints:reconciliations}}
+
+<h2 style="{{style:h2}}">Good to know</h2>
+
+<div style="{{style:callout-warning}}">
+  <p style="{{style:callout-title}}">Only a preview is a dry run</p>
+  <p style="{{style:callout-body}}">Only an order path that ends in <code style="{{style:code}}">preview</code> leaves the order as it is. Every other state change, such as <code style="{{style:code}}">upgrade</code>, <code style="{{style:code}}">cancel</code> or <code style="{{style:code}}">discard_draft</code>, changes the order at once, and <a href="{{MINTLIFY}}/api-reference/orders/discard-a-draft-order" style="{{style:a}}">Discard a draft order</a> removes the draft so it can no longer be read. <a href="{{MINTLIFY}}/api-reference/orders/preview-an-order" style="{{style:a}}">Preview an order</a> creates no order, but an <code style="{{style:code}}">account</code> object in its body still creates that account. Money also moves for real: <a href="{{MINTLIFY}}/api-reference/payments/create-a-payment" style="{{style:a}}">Create a payment</a> charges the card when a <code style="{{style:code}}">payment_applied</code> entry names a processor that holds a card token.</p>
+</div>
+
+<div style="{{style:callout-info}}">
+  <p style="{{style:callout-title}}">Applying a credit note records payments</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/credit-notes/apply-a-credit-note-to-invoices" style="{{style:a}}">Apply a credit note to invoices</a> records a payment against each invoice you list in <code style="{{style:code}}">credit_note.invoices</code>, but the call returns the credit note rather than those payments. Each entry takes only <code style="{{style:code}}">invoice_id</code> and <code style="{{style:code}}">amount</code>.</p>
+</div>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}"><strong>Pass an invoice's id, never its uuid.</strong> Every invoice path takes the invoice's <code style="{{style:code}}">id</code>, such as <code style="{{style:code}}">INV-0001</code>.</li>
+  <li style="{{style:li}}"><strong>Most write bodies sit under one key.</strong> Orders use <code style="{{style:code}}">order</code>, invoices <code style="{{style:code}}">invoice</code>, payments <code style="{{style:code}}">payment</code>, refunds <code style="{{style:code}}">refund</code> and credit notes <code style="{{style:code}}">credit_note</code>. The order <code style="{{style:code}}">upgrade</code>, <code style="{{style:code}}">downgrade</code> and <code style="{{style:code}}">contract_adjustment</code> calls and their previews are the exception: they take <code style="{{style:code}}">effective_date</code> and <code style="{{style:code}}">lines</code> at the top level.</li>
+  <li style="{{style:li}}"><strong>A contract needs a recurring or metered item on a line.</strong> Set <code style="{{style:code}}">allow_contract</code> to <code style="{{style:code}}">true</code> and send <code style="{{style:code}}">contract_properties</code> when you create the order.</li>
+  <li style="{{style:li}}"><strong>Money mostly comes back as text.</strong> Amounts such as an invoice's <code style="{{style:code}}">total</code> or a refund's <code style="{{style:code}}">amount</code> are strings like <code style="{{style:code}}">"12.00"</code>. A credit note application's <code style="{{style:code}}">amount</code> and <code style="{{style:code}}">remaining_balance</code> are numbers.</li>
+  <li style="{{style:li}}"><strong>Only a single read of an invoice carries its lines.</strong> An entry in <a href="{{MINTLIFY}}/api-reference/invoices/list-invoices" style="{{style:a}}">List invoices</a> has no <code style="{{style:code}}">lines</code>; retrieve the invoice, or list its lines, to see them.</li>
+  <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. While <code style="{{style:code}}">pagination.has_more</code> is <code style="{{style:code}}">true</code>, send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to get the next page.</li>
+</ul>
+
+<h2 style="{{style:h2}}">Related articles</h2>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}">Getting started with the Exsited API</li>
+  <li style="{{style:li}}">Installing the Exsited SDKs</li>
+</ul>
