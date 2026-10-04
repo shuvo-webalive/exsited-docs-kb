@@ -36,6 +36,13 @@
       "subtitle": "Manage what you sell and buy, the stock behind it and how it is shipped and returned",
       "summary": "The 156 endpoints for items, stock, shipping, fulfillments, receipts, bookings, rental assets and returns, the tasks they cover and what to watch for.",
       "area": "Items and fulfilment"
+    },
+    {
+      "file": "06-purchasing.html",
+      "title": "Working with purchasing through the API",
+      "subtitle": "Order from suppliers, record their bills and pay them",
+      "summary": "The 89 endpoints for purchase orders, purchase invoices, purchase payments, credits, refunds and returns to suppliers, the tasks they cover and what to watch for.",
+      "area": "Purchasing"
     }
   ]
 }
