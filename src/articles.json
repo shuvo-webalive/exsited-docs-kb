@@ -43,6 +43,13 @@
       "subtitle": "Order from suppliers, record their bills and pay them",
       "summary": "The 89 endpoints for purchase orders, purchase invoices, purchase payments, credits, refunds and returns to suppliers, the tasks they cover and what to watch for.",
       "area": "Purchasing"
+    },
+    {
+      "file": "07-work-and-people.html",
+      "title": "Working with work and people through the API",
+      "subtitle": "Manage the people you book, the work they do and the time they spend",
+      "summary": "The 69 endpoints for labours, tasks, timesheets, milestones, employees, departments, designations, teams and time periods, the tasks they cover and what to watch for.",
+      "area": "Work and people"
     }
   ]
 }
