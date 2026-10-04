@@ -1,0 +1,156 @@
+<p style="{{style:lead}}">The items and fulfilment APIs let your software manage the products and services you sell and buy, and the stock and deliveries behind them. You can create and update items, set their sale, purchase and inventory sections, add stock to warehouses and read stock changes. You can also set up units of measurement, zones, shipping packages, shipping rules and fulfillment profiles and terms, record items sent and received, take bookings, hire out rental assets and handle customer returns. All one hundred and fifty-six endpoints are available in all seven Exsited SDKs.</p>
+
+<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/items" style="{{style:button}}">Open the Items reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/item-fulfillments" style="{{style:button}}">Open the Item fulfillments reference</a></p>
+
+<h2 style="{{style:h2}}">Common tasks</h2>
+
+<table style="{{style:table}}">
+  <thead>
+    <tr>
+      <th style="{{style:th}}">You want to</th>
+      <th style="{{style:th}}">Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="{{style:td}}">Add a new product or service</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/items/create-an-item" style="{{style:a}}">Create an item</a> with a <code style="{{style:code}}">name</code> and a <code style="{{style:code}}">type</code> in upper case, such as <code style="{{style:code}}">STANDARD</code>, inside <code style="{{style:code}}">item</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Set the price and currencies an item sells in</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/items/create-an-items-sale-settings" style="{{style:a}}">Create an item's sale settings</a> once, then <a href="{{MINTLIFY}}/api-reference/items/update-an-items-sale-settings" style="{{style:a}}">Update an item's sale settings</a> for later changes</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add stock to a warehouse, or take it away</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/items/add-stock-to-a-warehouse" style="{{style:a}}">Add stock to a warehouse</a>, naming each warehouse with the <code style="{{style:code}}">quantity</code> to add. A negative quantity removes stock</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">See how much stock an item has in each warehouse</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/items/retrieve-an-items-inventory-settings-and-stock" style="{{style:a}}">Retrieve an item's inventory settings and stock</a></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Record items sent to a customer against an invoice</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/item-fulfillments/create-an-item-fulfillment" style="{{style:a}}">Create an item fulfillment</a> with the <code style="{{style:code}}">invoice_id</code> and, for each invoice line, its <code style="{{style:code}}">invoice_line</code> id and the <code style="{{style:code}}">fulfillment_quantity</code> sent</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Record items received from a supplier against a purchase order</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/item-receipts/create-an-item-receipt" style="{{style:a}}">Create an item receipt</a> with the <code style="{{style:code}}">purchase_order</code>, a <code style="{{style:code}}">receipt_status</code>, a <code style="{{style:code}}">receipt_date</code> and the lines received</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Charge shipping in a group of countries</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/zones/create-a-zone" style="{{style:a}}">Create a zone</a>, <a href="{{MINTLIFY}}/api-reference/shipping-rules/create-a-shipping-rule" style="{{style:a}}">Create a shipping rule</a>, then <a href="{{MINTLIFY}}/api-reference/shipping-rules/set-a-shipping-rules-configuration" style="{{style:a}}">Set a shipping rule's configuration</a> with the zone and the rate</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Let a customer return goods from a fulfilled invoice</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/return-merchandise-authorisations/create-a-return-merchandise-authorisation" style="{{style:a}}">Create a return merchandise authorisation</a>, then <a href="{{MINTLIFY}}/api-reference/return-merchandise-authorisations/receive-returned-stock-for-an-rma" style="{{style:a}}">Receive returned stock for an RMA</a> when the goods arrive</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="{{style:h2}}">All endpoints</h2>
+
+<h3 style="{{style:h3}}">Items</h3>
+
+<p style="{{style:p}}">These endpoints create, read, update and delete items, set their sale, purchase and inventory sections, add stock to warehouses and manage bundles, families, variations, packages and notes, and the <a href="{{MINTLIFY}}/items" style="{{style:a}}">Items overview</a> explains each one.</p>
+
+{{endpoints:items}}
+
+<h3 style="{{style:h3}}">Inventory adjustments</h3>
+
+<p style="{{style:p}}">These endpoints list the stock changes recorded for every item and warehouse and read one adjustment by its <code style="{{style:code}}">id</code>, and the <a href="{{MINTLIFY}}/inventory-adjustments" style="{{style:a}}">Inventory adjustments overview</a> explains each one.</p>
+
+{{endpoints:inventory_adjustments}}
+
+<h3 style="{{style:h3}}">Units of measurement</h3>
+
+<p style="{{style:p}}">These endpoints list, read, create, update and delete the units of measurement your settings define, and the <a href="{{MINTLIFY}}/units-of-measurement" style="{{style:a}}">Units of measurement overview</a> explains each one.</p>
+
+{{endpoints:uom}}
+
+<h3 style="{{style:h3}}">Zones</h3>
+
+<p style="{{style:p}}">These endpoints list, read, create, update and delete zones, the named groups of countries that shipping rules apply to, and the <a href="{{MINTLIFY}}/zones" style="{{style:a}}">Zones overview</a> explains each one.</p>
+
+{{endpoints:zones}}
+
+<h3 style="{{style:h3}}">Shipping packages</h3>
+
+<p style="{{style:p}}">These endpoints list, read, create, update and delete shipping packages, the boxes described by their size and weight, and the <a href="{{MINTLIFY}}/shipping-packages" style="{{style:a}}">Shipping packages overview</a> explains each one.</p>
+
+{{endpoints:shipping_packages}}
+
+<h3 style="{{style:h3}}">Shipping rules</h3>
+
+<p style="{{style:p}}">These endpoints list, read, create, update and delete shipping rules and set the zones and rate each rule charges, and the <a href="{{MINTLIFY}}/shipping-rules" style="{{style:a}}">Shipping rules overview</a> explains each one.</p>
+
+{{endpoints:shipping_rules}}
+
+<h3 style="{{style:h3}}">Fulfillment profiles</h3>
+
+<p style="{{style:p}}">These endpoints list, read, create, update and delete fulfillment profiles, each a named set of fulfillment statuses, and the <a href="{{MINTLIFY}}/fulfillment-profiles" style="{{style:a}}">Fulfillment profiles overview</a> explains each one.</p>
+
+{{endpoints:fulfillment_profiles}}
+
+<h3 style="{{style:h3}}">Fulfillment terms</h3>
+
+<p style="{{style:p}}">These endpoints list, read, create, update and delete fulfillment terms, each a named period and duration, and the <a href="{{MINTLIFY}}/fulfillment-terms" style="{{style:a}}">Fulfillment terms overview</a> explains each one.</p>
+
+{{endpoints:fulfillment_terms}}
+
+<h3 style="{{style:h3}}">Item fulfillments</h3>
+
+<p style="{{style:p}}">These endpoints record items sent against a sale invoice's lines, list, read, update and delete fulfillments and manage their notes, and the <a href="{{MINTLIFY}}/item-fulfillments" style="{{style:a}}">Item fulfillments overview</a> explains each one.</p>
+
+{{endpoints:item_fulfillments}}
+
+<h3 style="{{style:h3}}">Item receipts</h3>
+
+<p style="{{style:p}}">These endpoints record items received against a purchase order's lines and list, read, update and delete item receipts, and the <a href="{{MINTLIFY}}/item-receipts" style="{{style:a}}">Item receipts overview</a> explains each one.</p>
+
+{{endpoints:item_receipts}}
+
+<h3 style="{{style:h3}}">Bookings</h3>
+
+<p style="{{style:p}}">These endpoints create, preview, change and delete bookings, orders whose lines reserve a labour for set booking times, and read their lines, billing, invoices, payments and PDFs, and the <a href="{{MINTLIFY}}/bookings" style="{{style:a}}">Bookings overview</a> explains each one.</p>
+
+{{endpoints:bookings}}
+
+<h3 style="{{style:h3}}">Rental assets</h3>
+
+<p style="{{style:p}}">These endpoints manage rental assets, the profiles that price them and the hours they are available, and the <a href="{{MINTLIFY}}/rental-assets" style="{{style:a}}">Rental assets overview</a> explains each one.</p>
+
+{{endpoints:rental_assets}}
+
+<h3 style="{{style:h3}}">Return merchandise authorisations</h3>
+
+<p style="{{style:p}}">These endpoints authorise customer returns against fulfilled invoices, approve or reject them, receive the returned stock and keep notes, and the <a href="{{MINTLIFY}}/return-merchandise-authorisations" style="{{style:a}}">Return merchandise authorisations overview</a> explains each one.</p>
+
+{{endpoints:return_merchandise_authorisations}}
+
+<h2 style="{{style:h2}}">Good to know</h2>
+
+<div style="{{style:callout-warning}}">
+  <p style="{{style:callout-title}}">Deleting a booking deletes any order with that id</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/bookings/delete-a-booking" style="{{style:a}}">Delete a booking</a> removes whatever order has the <code style="{{style:code}}">id</code> you send, of any type, so check the <code style="{{style:code}}">id</code> first. Stock that has moved also locks records: a fulfillment cannot be deleted once any of its stock has been sent, a completed item receipt cannot be deleted, and only a draft return merchandise authorisation can be deleted. These deletes are refused with <code style="{{style:code}}">400</code> and the code <code style="{{style:code}}">stock_committed</code>.</p>
+</div>
+
+<div style="{{style:callout-info}}">
+  <p style="{{style:callout-title}}">Address an item by its id code</p>
+  <p style="{{style:callout-body}}">Item paths take the item's <code style="{{style:code}}">id</code>, such as <code style="{{style:code}}">ITEM-0001</code>. Do not use its <code style="{{style:code}}">uuid</code>, or the integer <code style="{{style:code}}">id</code> that <a href="{{MINTLIFY}}/api-reference/items/retrieve-an-items-sale-settings" style="{{style:a}}">Retrieve an item's sale settings</a> and <a href="{{MINTLIFY}}/api-reference/items/retrieve-an-items-purchase-settings" style="{{style:a}}">Retrieve an item's purchase settings</a> return.</p>
+</div>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}"><strong>Every item write sits under <code style="{{style:code}}">item</code>.</strong> The one exception is <a href="{{MINTLIFY}}/api-reference/items/upload-an-items-image" style="{{style:a}}">Upload an item's image</a>, which sends <code style="{{style:code}}">image_base64</code> at the top level of a JSON body.</li>
+  <li style="{{style:li}}"><strong>An item that an order uses cannot be deleted.</strong> <a href="{{MINTLIFY}}/api-reference/items/delete-an-item" style="{{style:a}}">Delete an item</a> returns <code style="{{style:code}}">409</code> for it, and retrying does not help.</li>
+  <li style="{{style:li}}"><strong>Stock quantities are strings.</strong> In inventory adjustments, <code style="{{style:code}}">adjustment_amount</code> and every <code style="{{style:code}}">quantity_*</code> field arrive as text, so convert them before doing arithmetic.</li>
+  <li style="{{style:li}}"><strong>A shipping rule names a zone by its dashed uuid.</strong> Take the 32 hex digits after <code style="{{style:code}}">zn_</code> in the zone's <code style="{{style:code}}">id</code> and group them 8-4-4-4-12. In the same way, a shipping package's <code style="{{style:code}}">*_uom</code> fields take a unit's bare uuid, not its prefixed <code style="{{style:code}}">id</code>.</li>
+  <li style="{{style:li}}"><strong>Return merchandise authorisation writes take the <code style="{{style:code}}">rma_</code> id; the reads under it take the code.</strong> The note and receipt reads return <code style="{{style:code}}">404</code> for an <code style="{{style:code}}">rma_</code> id.</li>
+  <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. Send <code style="{{style:code}}">limit</code>, then pass <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> until <code style="{{style:code}}">has_more</code> is <code style="{{style:code}}">false</code>.</li>
+</ul>
+
+<h2 style="{{style:h2}}">Related articles</h2>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}">Getting started with the Exsited API</li>
+  <li style="{{style:li}}">Installing the Exsited SDKs</li>
+</ul>
