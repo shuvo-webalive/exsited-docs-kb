@@ -1,0 +1,156 @@
+<p style="{{style:lead}}">The settings APIs let your software read and change how your Exsited instance is set up. You can manage currencies, taxes, warehouses, item groups, variations, payment processors, payment terms, pricing levels, discount and shipping profiles, custom objects, field settings and the general settings groups. You can also manage accounting codes, additional codes, billing, charging and pricing periods, invoice terms, salutations, document and email templates and roles, and read days of the month and countries. All one hundred and forty-one endpoints are available in all seven Exsited SDKs.</p>
+
+<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/settings" style="{{style:button}}">Open the Settings reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/accounting-codes" style="{{style:button}}">Open the Accounting codes reference</a></p>
+
+<h2 style="{{style:h2}}">Common tasks</h2>
+
+<table style="{{style:table}}">
+  <thead>
+    <tr>
+      <th style="{{style:th}}">You want to</th>
+      <th style="{{style:th}}">Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="{{style:td}}">See which settings areas your instance has</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/list-settings-areas" style="{{style:a}}">List settings areas</a>. Each entry under <code style="{{style:code}}">settings.resources</code> has a <code style="{{style:code}}">name</code> and an <code style="{{style:code}}">href</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add a warehouse to hold stock</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/create-a-warehouse" style="{{style:a}}">Create a warehouse</a> with a <code style="{{style:code}}">name</code> and the country's <code style="{{style:code}}">country_</code> id as <code style="{{style:code}}">country</code>, inside <code style="{{style:code}}">warehouse</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Read one group of general settings, such as date and time</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/retrieve-a-general-settings-group" style="{{style:a}}">Retrieve a general settings group</a> with a <code style="{{style:code}}">group</code> such as <code style="{{style:code}}">date_and_time</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Make an account field required</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/update-account-field-settings" style="{{style:a}}">Update account field settings</a>, setting <code style="{{style:code}}">enabled</code> and <code style="{{style:code}}">required</code> as <code style="{{style:code}}">"true"</code> or <code style="{{style:code}}">"false"</code> for each field</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add a general ledger account for sales revenue</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounting-codes/create-an-accounting-code" style="{{style:a}}">Create an accounting code</a> with a <code style="{{style:code}}">name</code>, an <code style="{{style:code}}">account_code_type</code> such as <code style="{{style:code}}">sales_revenue</code> and a <code style="{{style:code}}">gl_account_number</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Set up a billing period built on a time period</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/billing-periods/create-a-billing-period" style="{{style:a}}">Create a billing period</a> with a <code style="{{style:code}}">name</code> and the time period's hyphenated uuid as <code style="{{style:code}}">time_period</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add a payment term</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/create-a-payment-term" style="{{style:a}}">Create a payment term</a> with a <code style="{{style:code}}">name</code>, a <code style="{{style:code}}">period</code> such as <code style="{{style:code}}">DAILY</code> and a <code style="{{style:code}}">duration</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add a shared email template</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/email-templates/create-an-email-template" style="{{style:a}}">Create an email template</a> with a <code style="{{style:code}}">name</code> and a <code style="{{style:code}}">subject</code>, sending <code style="{{style:code}}">cc</code> and <code style="{{style:code}}">bcc</code> as lists of addresses</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="{{style:h2}}">All endpoints</h2>
+
+<h3 style="{{style:h3}}">Settings</h3>
+
+<p style="{{style:p}}">These endpoints read and change currencies, taxes, time zones, warehouses, item groups, variations, discount, shipping and payment set up, custom objects, field settings and the general settings groups, and the <a href="{{MINTLIFY}}/settings" style="{{style:a}}">Settings overview</a> explains each one.</p>
+
+{{endpoints:settings}}
+
+<h3 style="{{style:h3}}">Accounting codes</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the accounting codes that carry general ledger account numbers and names, and the <a href="{{MINTLIFY}}/accounting-codes" style="{{style:a}}">Accounting codes overview</a> explains each one.</p>
+
+{{endpoints:accounting_codes}}
+
+<h3 style="{{style:h3}}">Additional codes</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete additional codes, the data sets used on purchase order lines, and the <a href="{{MINTLIFY}}/additional-codes" style="{{style:a}}">Additional codes overview</a> explains each one.</p>
+
+{{endpoints:additional_codes}}
+
+<h3 style="{{style:h3}}">Billing periods</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete billing periods, each built on a time period, and the <a href="{{MINTLIFY}}/billing-periods" style="{{style:a}}">Billing periods overview</a> explains each one.</p>
+
+{{endpoints:billing_periods}}
+
+<h3 style="{{style:h3}}">Charging periods</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete charging periods, each linked to a time period, and the <a href="{{MINTLIFY}}/charging-periods" style="{{style:a}}">Charging periods overview</a> explains each one.</p>
+
+{{endpoints:charging_periods}}
+
+<h3 style="{{style:h3}}">Pricing periods</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update, enable, disable and delete pricing periods, each linked to a time period, and the <a href="{{MINTLIFY}}/pricing-periods" style="{{style:a}}">Pricing periods overview</a> explains each one.</p>
+
+{{endpoints:pricing_periods}}
+
+<h3 style="{{style:h3}}">Invoice terms</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update, enable, disable and delete invoice terms, each a period and a duration, and the <a href="{{MINTLIFY}}/invoice-terms" style="{{style:a}}">Invoice terms overview</a> explains each one.</p>
+
+{{endpoints:invoice_terms}}
+
+<h3 style="{{style:h3}}">Days of the month</h3>
+
+<p style="{{style:p}}">These endpoints list and read the days of the month a date can be aligned to, and the <a href="{{MINTLIFY}}/days-of-the-month" style="{{style:a}}">Days of the month overview</a> explains each one.</p>
+
+{{endpoints:day_of_month}}
+
+<h3 style="{{style:h3}}">Countries</h3>
+
+<p style="{{style:p}}">These endpoints list and read countries and update a country's status, description and default address fields, and the <a href="{{MINTLIFY}}/countries" style="{{style:a}}">Countries overview</a> explains each one.</p>
+
+{{endpoints:countries}}
+
+<h3 style="{{style:h3}}">Salutations</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the salutations, such as Dr or Ms, used on contacts, and the <a href="{{MINTLIFY}}/salutations" style="{{style:a}}">Salutations overview</a> explains each one.</p>
+
+{{endpoints:salutations}}
+
+<h3 style="{{style:h3}}">Document templates</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete document templates, such as PDF document layouts, and the <a href="{{MINTLIFY}}/document-templates" style="{{style:a}}">Document templates overview</a> explains each one.</p>
+
+{{endpoints:document_templates}}
+
+<h3 style="{{style:h3}}">Email templates</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the email templates shared across the instance, and the <a href="{{MINTLIFY}}/email-templates" style="{{style:a}}">Email templates overview</a> explains each one.</p>
+
+{{endpoints:email_templates}}
+
+<h3 style="{{style:h3}}">Roles</h3>
+
+<p style="{{style:p}}">These endpoints list, read, create, update, enable, disable and delete the user roles on your instance, and the <a href="{{MINTLIFY}}/roles" style="{{style:a}}">Roles overview</a> explains each one.</p>
+
+{{endpoints:roles}}
+
+<h2 style="{{style:h2}}">Good to know</h2>
+
+<div style="{{style:callout-warning}}">
+  <p style="{{style:callout-title}}">Updating the general group resets other settings</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/settings/update-the-general-group-of-general-settings" style="{{style:a}}">Update the general group of general settings</a> also sets eight other instance settings, such as <code style="{{style:code}}">accountingPeriod</code> and <code style="{{style:code}}">fiscalYear</code>, to null, and no API call can set them back. Do not send this call unless you can reset those settings in the Exsited web app. Currencies and taxes also stay once you create them: there is no call that deletes either.</p>
+</div>
+
+<div style="{{style:callout-info}}">
+  <p style="{{style:callout-title}}">General settings are read and written one group at a time</p>
+  <p style="{{style:callout-body}}">The <code style="{{style:code}}">group</code> is one of <code style="{{style:code}}">account</code>, <code style="{{style:code}}">item</code>, <code style="{{style:code}}">date_and_time</code>, <code style="{{style:code}}">order</code>, <code style="{{style:code}}">purchase</code>, <code style="{{style:code}}">labour</code>, <code style="{{style:code}}">transaction</code>, <code style="{{style:code}}">security</code>, <code style="{{style:code}}">dashboard</code>, <code style="{{style:code}}">portal</code>, <code style="{{style:code}}">display</code> or <code style="{{style:code}}">general</code>. The dashboard and security groups store flags as <code style="{{style:code}}">"1"</code> and <code style="{{style:code}}">"0"</code>, so send flags to those groups that way.</p>
+</div>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}"><strong>Each record type has its own wrapper key.</strong> A currency goes inside <code style="{{style:code}}">currency</code>, a warehouse inside <code style="{{style:code}}">warehouse</code>, an accounting code inside <code style="{{style:code}}">accounting_code</code>, and general settings inside <code style="{{style:code}}">general_settings</code>. Reads return the record under the same key.</li>
+  <li style="{{style:li}}"><strong>Periods link to a time period in two ways.</strong> A billing period takes the time period's hyphenated uuid; charging and pricing periods take its <code style="{{style:code}}">tp_</code> id.</li>
+  <li style="{{style:li}}"><strong>Some writes return a different shape from the read.</strong> A payment term or invoice term create returns a flat <code style="{{style:code}}">period</code> and <code style="{{style:code}}">duration</code>, where a read nests them under <code style="{{style:code}}">duration</code>.</li>
+  <li style="{{style:li}}"><strong>Read a country again after you update it.</strong> <a href="{{MINTLIFY}}/api-reference/countries/update-a-country" style="{{style:a}}">Update a country</a> returns the country's values from before the change.</li>
+  <li style="{{style:li}}"><strong>Default and system records cannot be deleted.</strong> The default payment processor, the default pricing level and a role whose <code style="{{style:code}}">is_system_role</code> is true cannot be deleted.</li>
+  <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. Send <code style="{{style:code}}">limit</code> for the page size, then pass <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> while <code style="{{style:code}}">pagination.has_more</code> is true.</li>
+</ul>
+
+<h2 style="{{style:h2}}">Related articles</h2>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}">Getting started with the Exsited API</li>
+  <li style="{{style:li}}">Installing the Exsited SDKs</li>
+</ul>

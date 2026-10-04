@@ -57,6 +57,13 @@
       "subtitle": "Control how records move through your processes and who signs them off",
       "summary": "The 71 endpoints for workflows, events, approvals, alerts, action scripts and notes, the tasks they cover and what to watch for.",
       "area": "Workflows, approvals and alerts"
+    },
+    {
+      "file": "09-settings.html",
+      "title": "Working with settings through the API",
+      "subtitle": "Read and change how your Exsited instance is set up",
+      "summary": "The 141 endpoints for instance settings, codes, periods, terms, countries, templates and roles, the tasks they cover and what to watch for.",
+      "area": "Settings"
     }
   ]
 }
