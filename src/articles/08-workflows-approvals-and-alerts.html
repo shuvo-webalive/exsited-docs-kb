@@ -1,4 +1,4 @@
-<p style="{{style:lead}}">The workflow, approval and alert APIs let your software manage how records move through your processes and who signs them off. You can create and change workflows and read their stages and milestones, list scheduled events and run or remove them, define custom events, approve or reject pending approvals and set up approval profiles and user groups. You can also read alerts, manage alert responsibilities, store action scripts, organise note groups and download note attachments. All seventy-one endpoints are available in all seven Exsited SDKs.</p>
+<p style="{{style:lead}}">The workflow, approval and alert APIs let your software manage how records move through your processes and who signs them off. You can read workflows with their stages and milestones, list scheduled events and run or remove them, read custom events, approve or reject pending approvals and set up approval profiles and user groups. You can also read alerts, manage alert responsibilities, store action scripts, organise note groups and download note attachments. All 71 endpoints are available in all seven Exsited SDKs.</p>
 
 <p style="{{style:button-row}}"><a href="{{MINTLIFY}}/workflows" style="{{style:button}}">Open the Workflows reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/approvals" style="{{style:button}}">Open the Approvals reference</a></p>
 
@@ -12,14 +12,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td style="{{style:td}}">Set up a new workflow</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/workflows/create-a-workflow" style="{{style:a}}">Create a workflow</a> with a <code style="{{style:code}}">name</code> inside <code style="{{style:code}}">workflow</code>. It starts as a draft</td>
-    </tr>
-    <tr>
-      <td style="{{style:td}}">Put a draft workflow into use</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/workflows/update-a-workflow" style="{{style:a}}">Update a workflow</a> to move it from draft to active. An active workflow can also move to inactive and back</td>
-    </tr>
     <tr>
       <td style="{{style:td}}">See which actions are scheduled to run later</td>
       <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/events/list-events" style="{{style:a}}">List events</a>, sorted with <code style="{{style:code}}">sort</code> set to <code style="{{style:code}}">-created_on</code> for the newest first</td>
@@ -42,7 +34,7 @@
     </tr>
     <tr>
       <td style="{{style:td}}">Download a file attached to a note</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/note-attachments/retrieve-a-note-attachment" style="{{style:a}}">Retrieve a note attachment</a> by its <code style="{{style:code}}">uuid</code>, then decode <code style="{{style:code}}">note_attachment.base64</code> to get the file</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/note-attachments/retrieve-a-note-attachment" style="{{style:a}}">Retrieve a note attachment</a> by its <code style="{{style:code}}">uuid</code>, then decode <code style="{{style:code}}">note_attachment.base64</code> to get the file. An attachment stays readable after its note, or the record the note belongs to, is deleted</td>
     </tr>
   </tbody>
 </table>
@@ -51,7 +43,7 @@
 
 <h3 style="{{style:h3}}">Workflows</h3>
 
-<p style="{{style:p}}">These endpoints create, read, update and delete workflows and read their stages, milestones and the workflow history of custom component instances, and the <a href="{{MINTLIFY}}/workflows" style="{{style:a}}">Workflows overview</a> explains each one.</p>
+<p style="{{style:p}}">These endpoints create, read, update and delete workflows and read their stages, milestones and the workflow history of custom component instances, though creating a workflow currently fails, and the <a href="{{MINTLIFY}}/workflows" style="{{style:a}}">Workflows overview</a> explains each one.</p>
 
 {{endpoints:workflows}}
 
@@ -142,13 +134,13 @@
 
 <div style="{{style:callout-info}}">
   <p style="{{style:callout-title}}">A custom event adds messages to your communication profiles</p>
-  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/custom-events/create-a-custom-event" style="{{style:a}}">Create a custom event</a> adds a message for the event to every communication profile, and deleting the event leaves those messages behind. Its <code style="{{style:code}}">base_event</code> takes an <code style="{{style:code}}">se_</code> id, not the <code style="{{style:code}}">evt_</code> id that <a href="{{MINTLIFY}}/api-reference/system-events/list-system-events" style="{{style:a}}">List system events</a> shows.</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/custom-events/create-a-custom-event" style="{{style:a}}">Create a custom event</a> adds a disabled message for the event to every communication profile, and deleting the event leaves those messages behind. Its <code style="{{style:code}}">base_event</code> takes an <code style="{{style:code}}">se_</code> id, not the <code style="{{style:code}}">evt_</code> id that <a href="{{MINTLIFY}}/api-reference/system-events/list-system-events" style="{{style:a}}">List system events</a> shows, and no endpoint returns an <code style="{{style:code}}">se_</code> id. Creating, updating and deleting a custom event have not been confirmed to work yet.</p>
 </div>
 
 <ul style="{{style:ul}}">
-  <li style="{{style:li}}"><strong>Change workflows under <code style="{{style:code}}">/workflows</code>.</strong> Workflow settings are read only, and every write under <code style="{{style:code}}">/settings/workflows</code> is refused with <code style="{{style:code}}">400</code>. A pre-built workflow cannot be deleted.</li>
+  <li style="{{style:li}}"><strong>Change workflows under <code style="{{style:code}}">/workflows</code>.</strong> Workflow settings are read only, and every write under <code style="{{style:code}}">/settings/workflows</code> is refused with <code style="{{style:code}}">400</code>. <a href="{{MINTLIFY}}/api-reference/workflows/create-a-workflow" style="{{style:a}}">Create a workflow</a> currently returns <code style="{{style:code}}">500</code> and creates nothing, so updating and deleting a workflow have not been confirmed to work either. A pre-built workflow cannot be deleted.</li>
   <li style="{{style:li}}"><strong>Records in use cannot be deleted.</strong> A custom event a workflow uses and an approval profile in use cannot be deleted.</li>
-  <li style="{{style:li}}"><strong>Two paths serve the same alert responsibilities.</strong> <code style="{{style:code}}">/settings/alert_responsibilities</code> and <code style="{{style:code}}">/alert_responsibility</code> hold the same records. Writes from the settings path need the <code style="{{style:code}}">MANAGE_ALERT_RESPONSIBILITY</code> permission.</li>
+  <li style="{{style:li}}"><strong>Two paths serve the same alert responsibilities.</strong> <code style="{{style:code}}">/settings/alert_responsibilities</code> and <code style="{{style:code}}">/alert_responsibility</code> hold the same records. Writes from the settings path need the <code style="{{style:code}}">MANAGE_ALERT_RESPONSIBILITY</code> permission. On the settings path only the listing has been confirmed to work, so use <code style="{{style:code}}">/alert_responsibility</code> to read or change a single record.</li>
   <li style="{{style:li}}"><strong>Alerts for employees and labours are found by code.</strong> An account's alerts are found by the account's <code style="{{style:code}}">id</code>.</li>
   <li style="{{style:li}}"><strong>Action script code is sent as a base64 file.</strong> Put a <code style="{{style:code}}">.js</code> file in <code style="{{style:code}}">script_file</code>, with its contents base64 encoded in <code style="{{style:code}}">content</code>.</li>
   <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. Pass <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to read the next page, and stop when <code style="{{style:code}}">pagination.has_more</code> is <code style="{{style:code}}">false</code>.</li>

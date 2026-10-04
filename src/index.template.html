@@ -412,7 +412,9 @@
       const clip = document.getElementById('clip');
       clip.value = value;
       clip.select();
-      document.execCommand('copy');
+      const done = document.execCommand('copy');
+      clip.value = '';
+      if (!done) throw new Error('copy failed');
     }
   }
 
@@ -421,7 +423,12 @@
     const key = button.dataset.copy;
     const value = key === 'categoryName' ? data.category.name
       : entry.kind === 'category' ? entry.category[key] : entry[key];
-    await writeText(value);
+    try {
+      await writeText(value);
+    } catch (error) {
+      document.getElementById('status').textContent = 'Copy failed. Open the HTML view and copy it by hand.';
+      return;
+    }
     button.classList.add('done');
     button.querySelector('span').textContent = 'Copied';
     if (key === 'html') {
@@ -439,7 +446,10 @@
   document.getElementById('preview').addEventListener('load', (event) => {
     const frame = event.target;
     const doc = frame.contentDocument;
-    const fit = () => { frame.style.height = doc.documentElement.scrollHeight + 'px'; };
+    const fit = () => {
+      frame.style.height = '0px';
+      frame.style.height = doc.documentElement.scrollHeight + 'px';
+    };
     fit();
     new ResizeObserver(fit).observe(doc.body);
     if (doc.fonts) doc.fonts.ready.then(fit);

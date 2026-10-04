@@ -1,6 +1,6 @@
-<p style="{{style:lead}}">The settings APIs let your software read and change how your Exsited instance is set up. You can manage currencies, taxes, warehouses, item groups, variations, payment processors, payment terms, pricing levels, discount and shipping profiles, custom objects, field settings and the general settings groups. You can also manage accounting codes, additional codes, billing, charging and pricing periods, invoice terms, salutations, document and email templates and roles, and read days of the month and countries. All one hundred and forty-one endpoints are available in all seven Exsited SDKs.</p>
+<p style="{{style:lead}}">The settings APIs let your software read and change how your Exsited instance is set up. You can manage currencies, taxes, warehouses, item groups, variations, payment processors, payment terms, pricing levels, discount and shipping profiles, custom objects, field settings and the general settings groups. You can also manage accounting codes, additional codes, billing, charging and pricing periods, invoice terms, salutations, document and email templates and roles, and read days of the month and countries. All 141 endpoints are available in all seven Exsited SDKs.</p>
 
-<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/settings" style="{{style:button}}">Open the Settings reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/accounting-codes" style="{{style:button}}">Open the Accounting codes reference</a></p>
+<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/instance-settings" style="{{style:button}}">Open the Instance settings reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/accounting-codes" style="{{style:button}}">Open the Accounting codes reference</a></p>
 
 <h2 style="{{style:h2}}">Common tasks</h2>
 
@@ -14,19 +14,19 @@
   <tbody>
     <tr>
       <td style="{{style:td}}">See which settings areas your instance has</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/list-settings-areas" style="{{style:a}}">List settings areas</a>. Each entry under <code style="{{style:code}}">settings.resources</code> has a <code style="{{style:code}}">name</code> and an <code style="{{style:code}}">href</code></td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/instance-settings/list-settings-areas" style="{{style:a}}">List settings areas</a>. Each entry under <code style="{{style:code}}">settings.resources</code> has a <code style="{{style:code}}">name</code> and an <code style="{{style:code}}">href</code></td>
     </tr>
     <tr>
       <td style="{{style:td}}">Add a warehouse to hold stock</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/create-a-warehouse" style="{{style:a}}">Create a warehouse</a> with a <code style="{{style:code}}">name</code> and the country's <code style="{{style:code}}">country_</code> id as <code style="{{style:code}}">country</code>, inside <code style="{{style:code}}">warehouse</code></td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/instance-settings/create-a-warehouse" style="{{style:a}}">Create a warehouse</a> with a <code style="{{style:code}}">name</code> and the country's <code style="{{style:code}}">country_</code> id as <code style="{{style:code}}">country</code>, inside <code style="{{style:code}}">warehouse</code></td>
     </tr>
     <tr>
       <td style="{{style:td}}">Read one group of general settings, such as date and time</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/retrieve-a-general-settings-group" style="{{style:a}}">Retrieve a general settings group</a> with a <code style="{{style:code}}">group</code> such as <code style="{{style:code}}">date_and_time</code></td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/instance-settings/retrieve-a-general-settings-group" style="{{style:a}}">Retrieve a general settings group</a> with a <code style="{{style:code}}">group</code> such as <code style="{{style:code}}">date_and_time</code></td>
     </tr>
     <tr>
       <td style="{{style:td}}">Make an account field required</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/update-account-field-settings" style="{{style:a}}">Update account field settings</a>, setting <code style="{{style:code}}">enabled</code> and <code style="{{style:code}}">required</code> as <code style="{{style:code}}">"true"</code> or <code style="{{style:code}}">"false"</code> for each field</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/instance-settings/update-account-field-settings" style="{{style:a}}">Update account field settings</a>, setting <code style="{{style:code}}">enabled</code> and <code style="{{style:code}}">required</code> as <code style="{{style:code}}">"true"</code> or <code style="{{style:code}}">"false"</code> for each field</td>
     </tr>
     <tr>
       <td style="{{style:td}}">Add a general ledger account for sales revenue</td>
@@ -38,7 +38,7 @@
     </tr>
     <tr>
       <td style="{{style:td}}">Add a payment term</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/settings/create-a-payment-term" style="{{style:a}}">Create a payment term</a> with a <code style="{{style:code}}">name</code>, a <code style="{{style:code}}">period</code> such as <code style="{{style:code}}">DAILY</code> and a <code style="{{style:code}}">duration</code></td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/instance-settings/create-a-payment-term" style="{{style:a}}">Create a payment term</a> with a <code style="{{style:code}}">name</code>, a <code style="{{style:code}}">period</code> such as <code style="{{style:code}}">DAILY</code> and a <code style="{{style:code}}">duration</code></td>
     </tr>
     <tr>
       <td style="{{style:td}}">Add a shared email template</td>
@@ -49,9 +49,9 @@
 
 <h2 style="{{style:h2}}">All endpoints</h2>
 
-<h3 style="{{style:h3}}">Settings</h3>
+<h3 style="{{style:h3}}">Instance settings</h3>
 
-<p style="{{style:p}}">These endpoints read and change currencies, taxes, time zones, warehouses, item groups, variations, discount, shipping and payment set up, custom objects, field settings and the general settings groups, and the <a href="{{MINTLIFY}}/settings" style="{{style:a}}">Settings overview</a> explains each one.</p>
+<p style="{{style:p}}">These endpoints read and change currencies, taxes, time zones, warehouses, item groups, variations, discount, shipping and payment set up, custom objects, field settings and the general settings groups, and the <a href="{{MINTLIFY}}/instance-settings" style="{{style:a}}">Instance settings overview</a> explains each one.</p>
 
 {{endpoints:settings}}
 
@@ -131,7 +131,7 @@
 
 <div style="{{style:callout-warning}}">
   <p style="{{style:callout-title}}">Updating the general group resets other settings</p>
-  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/settings/update-the-general-group-of-general-settings" style="{{style:a}}">Update the general group of general settings</a> also sets eight other instance settings, such as <code style="{{style:code}}">accountingPeriod</code> and <code style="{{style:code}}">fiscalYear</code>, to null, and no API call can set them back. Do not send this call unless you can reset those settings in the Exsited web app. Currencies and taxes also stay once you create them: there is no call that deletes either.</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/instance-settings/update-the-general-group-of-general-settings" style="{{style:a}}">Update the general group of general settings</a> also sets eight other instance settings, such as <code style="{{style:code}}">accountingPeriod</code> and <code style="{{style:code}}">fiscalYear</code>, to null, and no API call can set them back. Do not send this call unless you can reset those settings in the Exsited web app. Currencies and taxes also stay once you create them: there is no call that deletes either. <a href="{{MINTLIFY}}/api-reference/roles/create-a-role" style="{{style:a}}">Create a role</a> and <a href="{{MINTLIFY}}/api-reference/roles/update-a-role" style="{{style:a}}">Update a role</a> currently return <code style="{{style:code}}">500</code> after the role is saved, so list the roles before you retry. <a href="{{MINTLIFY}}/api-reference/instance-settings/update-a-shipping-profile" style="{{style:a}}">Update a shipping profile</a> and <a href="{{MINTLIFY}}/api-reference/additional-codes/update-an-additional-code" style="{{style:a}}">Update an additional code</a> currently return <code style="{{style:code}}">500</code> too; read the record again to see what is stored.</p>
 </div>
 
 <div style="{{style:callout-info}}">

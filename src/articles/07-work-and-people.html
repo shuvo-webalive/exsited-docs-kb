@@ -1,4 +1,4 @@
-<p style="{{style:lead}}">The work and people APIs let your software manage the people and resources you book, the work they do and the time they spend on it. You can manage labours and labour profiles, set their availability and find labours free to book, create tasks with checklists and notes, record timesheets against booked order lines and read milestones. You can also manage employees, designations, teams and time periods, and read your departments. All sixty-nine endpoints are available in all seven Exsited SDKs.</p>
+<p style="{{style:lead}}">The work and people APIs let your software manage the people and resources you book, the work they do and the time they spend on it. You can manage labours and labour profiles, set their availability and find labours free to book, create tasks with checklists, record timesheets against booked order lines and read milestones. You can also manage employees, designations, teams and time periods, and read your departments. All 69 endpoints are available in all seven Exsited SDKs.</p>
 
 <p style="{{style:button-row}}"><a href="{{MINTLIFY}}/labours" style="{{style:button}}">Open the Labours reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/tasks" style="{{style:button}}">Open the Tasks reference</a></p>
 
@@ -23,10 +23,6 @@
     <tr>
       <td style="{{style:td}}">Find who is free to book in a time window</td>
       <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/labours/list-labours-available-for-booking" style="{{style:a}}">List labours available for booking</a> with <code style="{{style:code}}">start_date</code> and <code style="{{style:code}}">end_date</code> as <code style="{{style:code}}">YYYY-MM-DD HH:MM</code></td>
-    </tr>
-    <tr>
-      <td style="{{style:td}}">Set the hours several labours are available</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/labours/update-labour-availability-in-bulk" style="{{style:a}}">Update labour availability in bulk</a>, with one entry per labour under <code style="{{style:code}}">labours</code></td>
     </tr>
     <tr>
       <td style="{{style:td}}">Create a task with a checklist</td>
@@ -57,7 +53,7 @@
 
 <h3 style="{{style:h3}}">Tasks</h3>
 
-<p style="{{style:p}}">These endpoints create, read, update and delete tasks and manage their checklist items, notes and note files, and the <a href="{{MINTLIFY}}/tasks" style="{{style:a}}">Tasks overview</a> explains each one.</p>
+<p style="{{style:p}}">These endpoints create, read, update and delete tasks and manage their checklist items, notes and note files, though adding a note to a task currently fails, and the <a href="{{MINTLIFY}}/tasks" style="{{style:a}}">Tasks overview</a> explains each one.</p>
 
 {{endpoints:tasks}}
 
@@ -87,7 +83,7 @@
 
 <h3 style="{{style:h3}}">Designations</h3>
 
-<p style="{{style:p}}">These endpoints list, create, retrieve, update and delete designations, the job titles you assign, and the <a href="{{MINTLIFY}}/designations" style="{{style:a}}">Designations overview</a> explains each one.</p>
+<p style="{{style:p}}">These endpoints list, create, retrieve, update and delete designations, the job titles you assign, though creating, updating and deleting a designation have not yet been confirmed to work, and the <a href="{{MINTLIFY}}/designations" style="{{style:a}}">Designations overview</a> explains each one.</p>
 
 {{endpoints:designations}}
 
@@ -107,7 +103,7 @@
 
 <div style="{{style:callout-warning}}">
   <p style="{{style:callout-title}}">Deletes cannot be undone, and some records are locked</p>
-  <p style="{{style:callout-body}}">Deleting a labour, labour profile, task, timesheet, employee, designation, team or time period cannot be undone; reading it afterwards returns <code style="{{style:code}}">404</code>. A labour that has been booked on an order cannot be deleted, so use <a href="{{MINTLIFY}}/api-reference/labours/cancel-a-labour" style="{{style:a}}">Cancel a labour</a> instead. A team with members cannot be deleted until you remove them, and a checklist item whose status is <code style="{{style:code}}">COMPLETED</code> cannot be deleted and returns <code style="{{style:code}}">409</code>.</p>
+  <p style="{{style:callout-body}}">Deleting a labour, labour profile, task, timesheet, employee, designation, team or time period cannot be undone; reading it afterwards returns <code style="{{style:code}}">404</code>. A labour that has been booked on an order cannot be deleted, so use <a href="{{MINTLIFY}}/api-reference/labours/cancel-a-labour" style="{{style:a}}">Cancel a labour</a> instead, and a labour profile that a booked labour uses cannot be deleted either. A team with members cannot be deleted until you remove them, and a checklist item whose status is <code style="{{style:code}}">COMPLETED</code> cannot be deleted and returns <code style="{{style:code}}">409</code>.</p>
 </div>
 
 <div style="{{style:callout-info}}">
@@ -116,12 +112,12 @@
 </div>
 
 <ul style="{{style:ul}}">
-  <li style="{{style:li}}"><strong>Each record type has its own wrapper key.</strong> Bodies go inside <code style="{{style:code}}">labour</code>, <code style="{{style:code}}">labour_profile</code>, <code style="{{style:code}}">work_task</code>, <code style="{{style:code}}">timesheet</code>, <code style="{{style:code}}">employee</code>, <code style="{{style:code}}">designation</code>, <code style="{{style:code}}">team</code> or <code style="{{style:code}}">time_period</code>, and the single record comes back under the same key.</li>
+  <li style="{{style:li}}"><strong>Each record type has its own wrapper key, and lists come a page at a time.</strong> Bodies go inside <code style="{{style:code}}">labour</code>, <code style="{{style:code}}">labour_profile</code>, <code style="{{style:code}}">work_task</code>, <code style="{{style:code}}">timesheet</code>, <code style="{{style:code}}">employee</code>, <code style="{{style:code}}">designation</code>, <code style="{{style:code}}">team</code> or <code style="{{style:code}}">time_period</code>, and the single record comes back under the same key. Listings put their records under <code style="{{style:code}}">data</code>; while <code style="{{style:code}}">pagination.has_more</code> is <code style="{{style:code}}">true</code>, send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to get the next page.</li>
   <li style="{{style:li}}"><strong>A timesheet belongs to a booked order line.</strong> <code style="{{style:code}}">sale_order_item</code> is the line's <code style="{{style:code}}">ln_</code> id with the prefix changed to <code style="{{style:code}}">soi_</code>, on a line that books a labour. Send times such as <code style="{{style:code}}">2026-11-09T09:00:00Z</code>.</li>
   <li style="{{style:li}}"><strong>Cancel and reactivate a labour with an empty JSON object.</strong> Cancel sets <code style="{{style:code}}">status</code> to <code style="{{style:code}}">inactive</code> and reactivate sets it to <code style="{{style:code}}">active</code>.</li>
   <li style="{{style:li}}"><strong>Teams and time periods are turned on and off through <code style="{{style:code}}">status</code>.</strong> Send <code style="{{style:code}}">active</code> or <code style="{{style:code}}">inactive</code> in an update. A time period's <code style="{{style:code}}">period</code> goes in upper case, such as <code style="{{style:code}}">MONTHLY</code>, and comes back in lower case.</li>
   <li style="{{style:li}}"><strong>Milestones and departments are read only.</strong> These areas have no create, update or delete call, and a department listed with a null <code style="{{style:code}}">id</code> cannot be retrieved on its own.</li>
-  <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. While <code style="{{style:code}}">pagination.has_more</code> is <code style="{{style:code}}">true</code>, send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to get the next page.</li>
+  <li style="{{style:li}}"><strong>Some calls do not work yet.</strong> <a href="{{MINTLIFY}}/api-reference/labours/update-labour-availability-in-bulk" style="{{style:a}}">Update labour availability in bulk</a> currently returns <code style="{{style:code}}">500</code>. <a href="{{MINTLIFY}}/api-reference/tasks/add-a-note-to-a-task" style="{{style:a}}">Add a note to a task</a> currently returns <code style="{{style:code}}">409</code>, so no task note can be created and the calls that need one have not been confirmed to work. <a href="{{MINTLIFY}}/api-reference/designations/create-a-designation" style="{{style:a}}">Create a designation</a> currently returns <code style="{{style:code}}">404</code> and leaves no record, so updating and deleting a designation have not been confirmed to work either.</li>
 </ul>
 
 <h2 style="{{style:h2}}">Related articles</h2>
