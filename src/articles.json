@@ -15,6 +15,13 @@
       "title": "Installing the Exsited SDKs",
       "subtitle": "What each SDK needs, and how to add it to your project",
       "summary": "What each SDK needs, how installation works, and fixes for common problems."
+    },
+    {
+      "file": "03-accounts.html",
+      "title": "Working with accounts through the API",
+      "subtitle": "Create and manage customers and suppliers, their contacts, groups and messages",
+      "summary": "The 77 endpoints for accounts, account emails, account groups, communications and communication profiles, the tasks they cover and what to watch for.",
+      "area": "Accounts"
     }
   ]
 }

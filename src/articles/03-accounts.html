@@ -1,0 +1,108 @@
+<p style="{{style:lead}}">The Accounts APIs let your software work with the customers and suppliers you bill and buy from. You can create, read, change, cancel and delete accounts, manage their contacts, addresses, payment methods, billing preferences and notes, and list the orders, invoices, payments and other records that belong to each account. You can also sort accounts into groups, manage communication profiles and email documents such as invoices and account statements. All seventy-seven endpoints are available in all seven Exsited SDKs.</p>
+
+<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/accounts" style="{{style:button}}">Open the Accounts reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/communications" style="{{style:button}}">Open the Communications reference</a></p>
+
+<h2 style="{{style:h2}}">Common tasks</h2>
+
+<table style="{{style:table}}">
+  <thead>
+    <tr>
+      <th style="{{style:th}}">You want to</th>
+      <th style="{{style:th}}">Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="{{style:td}}">Add a new customer or supplier</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/create-an-account" style="{{style:a}}">Create an account</a> with a <code style="{{style:code}}">name</code> and a <code style="{{style:code}}">type</code> of <code style="{{style:code}}">CUSTOMER</code>, <code style="{{style:code}}">SUPPLIER</code> or <code style="{{style:code}}">CUSTOMER_AND_SUPPLIER</code>, inside <code style="{{style:code}}">account</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Find accounts by email address or creation date</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/list-accounts" style="{{style:a}}">List accounts</a> with a filter such as <code style="{{style:code}}">filter_email_address_contains</code> or <code style="{{style:code}}">filter_created_on_gte</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Change a few of an account's details</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/update-an-accounts-information" style="{{style:a}}">Update an account's information</a>, sending only the fields to change inside <code style="{{style:code}}">account</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add a contact person to an account</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/add-contacts-to-an-account" style="{{style:a}}">Add contacts to an account</a>, giving each contact its slot, <code style="{{style:code}}">CONTACT_1</code> to <code style="{{style:code}}">CONTACT_5</code>, as <code style="{{style:code}}">type</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Save a payment method on an account</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/add-a-payment-method" style="{{style:a}}">Add a payment method</a> with <code style="{{style:code}}">processor_type</code>, <code style="{{style:code}}">payment_processor</code> and <code style="{{style:code}}">reference</code>. The first method you add becomes the account's default</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Close an account from a date, or open it again</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/cancel-an-account" style="{{style:a}}">Cancel an account</a> with an <code style="{{style:code}}">effective_date</code>, then <a href="{{MINTLIFY}}/api-reference/accounts/reactivate-an-account" style="{{style:a}}">Reactivate an account</a> with the same body when you need it back</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">See the invoices that belong to one account</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/list-an-accounts-invoices" style="{{style:a}}">List an account's invoices</a>, page by page</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Email an invoice or an account statement to a customer</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/communications/email-a-document" style="{{style:a}}">Email a document</a>, naming the document and the recipients in <code style="{{style:code}}">to</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="{{style:h2}}">All endpoints</h2>
+
+<h3 style="{{style:h3}}">Accounts</h3>
+
+<p style="{{style:p}}">These endpoints create, read, change, cancel and delete accounts and manage their contacts, addresses, payment methods, billing preferences, notes, image and emails, and the <a href="{{MINTLIFY}}/accounts" style="{{style:a}}">Accounts overview</a> explains each one.</p>
+
+{{endpoints:accounts}}
+
+<h3 style="{{style:h3}}">Account emails</h3>
+
+<p style="{{style:p}}">This endpoint deletes one email from an account's email history, and the <a href="{{MINTLIFY}}/account-emails" style="{{style:a}}">Account emails overview</a> explains it.</p>
+
+{{endpoints:account_emails}}
+
+<h3 style="{{style:h3}}">Account groups</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the groups you sort accounts into, such as wholesale or retail customers, and the <a href="{{MINTLIFY}}/account-groups" style="{{style:a}}">Account groups overview</a> explains each one.</p>
+
+{{endpoints:account_groups}}
+
+<h3 style="{{style:h3}}">Communications</h3>
+
+<p style="{{style:p}}">This endpoint emails one invoice, purchase invoice, account statement or payment to the recipients you name, and the <a href="{{MINTLIFY}}/communications" style="{{style:a}}">Communications overview</a> explains it.</p>
+
+{{endpoints:communications}}
+
+<h3 style="{{style:h3}}">Communication profiles</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the communication profiles that hold the messages and channel settings accounts use, and the <a href="{{MINTLIFY}}/communication-profiles" style="{{style:a}}">Communication profiles overview</a> explains each one.</p>
+
+{{endpoints:communication_profiles}}
+
+<h2 style="{{style:h2}}">Good to know</h2>
+
+<div style="{{style:callout-warning}}">
+  <p style="{{style:callout-title}}">Purging an account cannot be undone, and emails are real</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/accounts/purge-an-account" style="{{style:a}}">Purge an account</a> removes the account and its records permanently. If you only want to stop working with an account, use <a href="{{MINTLIFY}}/api-reference/accounts/cancel-an-account" style="{{style:a}}">Cancel an account</a> instead. <a href="{{MINTLIFY}}/api-reference/communications/email-a-document" style="{{style:a}}">Email a document</a> and <a href="{{MINTLIFY}}/api-reference/accounts/send-and-log-an-email" style="{{style:a}}">Send and log an email</a> send real email to the recipients you name, so use addresses you control when you try them.</p>
+</div>
+
+<div style="{{style:callout-info}}">
+  <p style="{{style:callout-title}}">Paths take the account's id, not its uuid</p>
+  <p style="{{style:callout-body}}">Every account path names the account by its <code style="{{style:code}}">id</code>, a short code such as <code style="{{style:code}}">W13ZGY</code>. Passing the account's <code style="{{style:code}}">uuid</code> returns <code style="{{style:code}}">404</code>.</p>
+</div>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}"><strong>Most writes put their fields inside one key.</strong> Account writes use <code style="{{style:code}}">account</code>, a single address <code style="{{style:code}}">address</code>, a contact <code style="{{style:code}}">contact</code>, a payment method <code style="{{style:code}}">payment_method</code> and billing preferences <code style="{{style:code}}">billing_preferences</code>. Setting a portal password and sending an email take their fields at the top level, and adding addresses takes a top-level <code style="{{style:code}}">addresses</code> list.</li>
+  <li style="{{style:li}}"><strong>A contact is read by its slot and changed by its id.</strong> <a href="{{MINTLIFY}}/api-reference/accounts/retrieve-a-contact-by-slot" style="{{style:a}}">Retrieve a contact by slot</a> takes <code style="{{style:code}}">CONTACT_1</code> to <code style="{{style:code}}">CONTACT_5</code>; updating, replacing and deleting a contact take its <code style="{{style:code}}">con_</code> id. A contact created as <code style="{{style:code}}">CONTACT_1</code> reads back with <code style="{{style:code}}">type</code> <code style="{{style:code}}">billing</code>.</li>
+  <li style="{{style:li}}"><strong>Some fields are written one way and read back another.</strong> <code style="{{style:code}}">currency</code> and <code style="{{style:code}}">time_zone</code> go in as a code and a name and read back as objects, an address is written with <code style="{{style:code}}">post_code</code> and reads back with <code style="{{style:code}}">postal_code</code>, and a contact's <code style="{{style:code}}">first_name</code> and <code style="{{style:code}}">last_name</code> read back under <code style="{{style:code}}">name</code>.</li>
+  <li style="{{style:li}}"><strong>An account with orders, invoices or payments cannot be deleted.</strong> <a href="{{MINTLIFY}}/api-reference/accounts/delete-an-account" style="{{style:a}}">Delete an account</a> returns <code style="{{style:code}}">409</code> for it, and retrying does not help.</li>
+  <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code> with a <code style="{{style:code}}">pagination</code> object. While <code style="{{style:code}}">has_more</code> is <code style="{{style:code}}">true</code>, send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to get the next page.</li>
+  <li style="{{style:li}}"><strong>Only unused groups and non-default profiles can be deleted.</strong> An account group can be deleted only when no account uses it, and the default communication profile cannot be deleted.</li>
+</ul>
+
+<h2 style="{{style:h2}}">Related articles</h2>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}">Getting started with the Exsited API</li>
+  <li style="{{style:li}}">Installing the Exsited SDKs</li>
+</ul>
