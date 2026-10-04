@@ -1,0 +1,126 @@
+<p style="{{style:lead}}">The platform APIs let your software work with your customer portal, your integrations and the data around your Exsited instance. You can log portal users in and manage their passwords, read your integration connections, create external databases and work with their records, and read overview reports over a date range. You can also manage OAuth applications, read the root organisation, manage child organisations and read webhook deliveries. All thirty-five endpoints are available in all seven Exsited SDKs.</p>
+
+<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/portal" style="{{style:button}}">Open the Portal reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/reports" style="{{style:button}}">Open the Reports reference</a></p>
+
+<h2 style="{{style:h2}}">Common tasks</h2>
+
+<table style="{{style:table}}">
+  <thead>
+    <tr>
+      <th style="{{style:th}}">You want to</th>
+      <th style="{{style:th}}">Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="{{style:td}}">Sign a customer in to your portal</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/portal/log-in-a-portal-user" style="{{style:a}}">Log in a portal user</a> with their <code style="{{style:code}}">email</code> and <code style="{{style:code}}">password</code> inside <code style="{{style:code}}">portal</code>. The response lists the portals they can open</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Let a portal user who forgot their password choose a new one</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/portal/request-a-portal-password-reset-link" style="{{style:a}}">Request a portal password reset link</a>, then <a href="{{MINTLIFY}}/api-reference/portal/reset-a-portal-password-with-a-code" style="{{style:a}}">Reset a portal password with a code</a></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">See which integrations are connected</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/integration-connections/list-integration-connections" style="{{style:a}}">List integration connections</a> with <code style="{{style:code}}">filter_status</code> set to <code style="{{style:code}}">ACTIVE</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Store your own table of data</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/external-databases/create-an-external-database" style="{{style:a}}">Create an external database</a> with a <code style="{{style:code}}">name</code> and a <code style="{{style:code}}">tables</code> array, each table with its <code style="{{style:code}}">table_name</code>, <code style="{{style:code}}">fields</code> and first <code style="{{style:code}}">records</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add rows to an external database table</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/external-databases/insert-records-into-an-external-database-table" style="{{style:a}}">Insert records into an external database table</a>, sending <code style="{{style:code}}">table_name</code> and <code style="{{style:code}}">records</code> at the top level of the body</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">See how many invoices were raised each day over a period</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/reports/retrieve-the-invoice-overview-report" style="{{style:a}}">Retrieve the invoice overview report</a> with <code style="{{style:code}}">date_range=custom</code> and <code style="{{style:code}}">from</code> and <code style="{{style:code}}">to</code> dates as <code style="{{style:code}}">YYYY-MM-DD</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Register an OAuth application</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/applications/create-an-application" style="{{style:a}}">Create an application</a> with a <code style="{{style:code}}">name</code> and a <code style="{{style:code}}">redirect_url</code> inside <code style="{{style:code}}">application</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Look up a webhook delivery you received</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/webhooks/retrieve-a-webhook-delivery" style="{{style:a}}">Retrieve a webhook delivery</a> with the <code style="{{style:code}}">whk_</code> id the delivery carries</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="{{style:h2}}">All endpoints</h2>
+
+<h3 style="{{style:h3}}">Portal</h3>
+
+<p style="{{style:p}}">These endpoints log portal users in, change, set and reset their passwords, and activate or validate portal accounts, and the <a href="{{MINTLIFY}}/portal" style="{{style:a}}">Portal overview</a> explains each one.</p>
+
+{{endpoints:portals}}
+
+<h3 style="{{style:h3}}">Integration connections</h3>
+
+<p style="{{style:p}}">These endpoints list the integration connections on your instance, filtered by status, and read one connection, and the <a href="{{MINTLIFY}}/integration-connections" style="{{style:a}}">Integration connections overview</a> explains each one.</p>
+
+{{endpoints:integration_connections}}
+
+<h3 style="{{style:h3}}">External databases</h3>
+
+<p style="{{style:p}}">These endpoints create external databases with tables and records, then list, read, search, insert and update their records, and the <a href="{{MINTLIFY}}/external-databases" style="{{style:a}}">External databases overview</a> explains each one.</p>
+
+{{endpoints:external_databases}}
+
+<h3 style="{{style:h3}}">Reports</h3>
+
+<p style="{{style:p}}">These endpoints read overview reports for accounts, invoices, orders, purchases, payments and refunds over a date range, and the <a href="{{MINTLIFY}}/reports" style="{{style:a}}">Reports overview</a> explains each one.</p>
+
+{{endpoints:reports}}
+
+<h3 style="{{style:h3}}">Applications</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the OAuth applications registered on your instance, and the <a href="{{MINTLIFY}}/applications" style="{{style:a}}">Applications overview</a> explains each one.</p>
+
+{{endpoints:applications}}
+
+<h3 style="{{style:h3}}">Organisation</h3>
+
+<p style="{{style:p}}">This endpoint reads the root organisation of your instance, with its name, type, contact and address fields, and the <a href="{{MINTLIFY}}/organisation" style="{{style:a}}">Organisation overview</a> explains it.</p>
+
+{{endpoints:organisation}}
+
+<h3 style="{{style:h3}}">Child organisations</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the child organisations below the root organisation, and the <a href="{{MINTLIFY}}/child-organisations" style="{{style:a}}">Child organisations overview</a> explains each one.</p>
+
+{{endpoints:organisations}}
+
+<h3 style="{{style:h3}}">Webhooks</h3>
+
+<p style="{{style:p}}">This endpoint reads one webhook delivery by the <code style="{{style:code}}">whk_</code> id it carries, and the <a href="{{MINTLIFY}}/webhooks" style="{{style:a}}">Webhooks overview</a> explains it.</p>
+
+{{endpoints:webhooks}}
+
+<h2 style="{{style:h2}}">Good to know</h2>
+
+<div style="{{style:callout-warning}}">
+  <p style="{{style:callout-title}}">Some changes cannot be taken back</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/portal/set-a-portal-password-by-email" style="{{style:a}}">Set a portal password by email</a> does not ask for the current password, and the old password cannot be put back. An external database cannot be deleted through the API; to put its tables back to a known state, create it again with <code style="{{style:code}}">replace</code> set to <code style="{{style:code}}">true</code>. Creating a child organisation changes your organisation hierarchy and assigns an existing user to it.</p>
+</div>
+
+<div style="{{style:callout-info}}">
+  <p style="{{style:callout-title}}">Reports can be slow</p>
+  <p style="{{style:callout-body}}">A report can take up to 90 seconds. Set your client timeout above the default 30 seconds, such as 120. Amounts and counts in a report, such as <code style="{{style:code}}">amount</code>, <code style="{{style:code}}">count</code> and <code style="{{style:code}}">net_gain</code>, are strings, not numbers.</p>
+</div>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}"><strong>A portal user is an account with portal access.</strong> Create the account with <code style="{{style:code}}">grant_portal_access</code> set to <code style="{{style:code}}">true</code> and a <code style="{{style:code}}">grant_portal_password</code>, then log in with its <code style="{{style:code}}">email_address</code> and that password. Every portal request body sits under <code style="{{style:code}}">portal</code>.</li>
+  <li style="{{style:li}}"><strong>Each external database record is a list of field and value pairs.</strong> A record looks like <code style="{{style:code}}">{"record": [{"field": "company", "value": "Acme Pty Ltd"}]}</code>.</li>
+  <li style="{{style:li}}"><strong>The client id and secret of a new application are never returned.</strong> Exsited generates them, and the API does not return them.</li>
+  <li style="{{style:li}}"><strong>Organisation records sit under <code style="{{style:code}}">organization</code>, spelled with a z.</strong> The root organisation is read only and never appears in <a href="{{MINTLIFY}}/api-reference/child-organisations/list-child-organisations" style="{{style:a}}">List child organisations</a>.</li>
+  <li style="{{style:li}}"><strong>No endpoint lists webhook deliveries.</strong> Keep the <code style="{{style:code}}">whk_</code> id each delivery carries, so you can read it later.</li>
+  <li style="{{style:li}}"><strong>External databases page differently.</strong> Their listings use <code style="{{style:code}}">has_next</code>, <code style="{{style:code}}">has_prev</code> and <code style="{{style:code}}">per_page</code>; the other listings here send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> while <code style="{{style:code}}">has_more</code> is true.</li>
+</ul>
+
+<h2 style="{{style:h2}}">Related articles</h2>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}">Getting started with the Exsited API</li>
+  <li style="{{style:li}}">Installing the Exsited SDKs</li>
+</ul>
