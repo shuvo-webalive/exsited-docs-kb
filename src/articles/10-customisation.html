@@ -1,0 +1,114 @@
+<p style="{{style:lead}}">The customisation APIs let your software add your own fields and record types to Exsited. You can define custom attributes and attach them to records such as accounts, define custom components and manage their objects, notes, activity, linked records and workflow status, and set up custom features with their own form layout. You can also read your custom fields, manage custom forms and download the file a file attribute holds. All fifty-eight endpoints are available in all seven Exsited SDKs.</p>
+
+<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/custom-attributes" style="{{style:button}}">Open the Custom attributes reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/custom-components" style="{{style:button}}">Open the Custom components reference</a></p>
+
+<h2 style="{{style:h2}}">Common tasks</h2>
+
+<table style="{{style:table}}">
+  <thead>
+    <tr>
+      <th style="{{style:th}}">You want to</th>
+      <th style="{{style:th}}">Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="{{style:td}}">Add a field of your own, such as a dropdown</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-attributes/create-a-custom-attribute" style="{{style:a}}">Create a custom attribute</a> with <code style="{{style:code}}">name</code>, <code style="{{style:code}}">display_name</code> and a <code style="{{style:code}}">type</code> such as <code style="{{style:code}}">DROPDOWN</code>, and its <code style="{{style:code}}">options</code> as a list of strings</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Define a new record type, such as a service contract</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-components/create-a-component-definition" style="{{style:a}}">Create a component definition</a> with a <code style="{{style:code}}">name</code> written with underscores, inside <code style="{{style:code}}">component</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add a record of that type to an account</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-components/create-a-component-object" style="{{style:a}}">Create a component object</a> inside <code style="{{style:code}}">custom_component_object</code>, naming the owning account in <code style="{{style:code}}">parents</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Link accounts or orders to a component object</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-components/link-accounts-or-orders-to-a-component-object" style="{{style:a}}">Link accounts or orders to a component object</a> with a <code style="{{style:code}}">domain_type</code> and the records in <code style="{{style:code}}">domains[].domain_id</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Move a component object to its next workflow status</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-components/change-a-component-objects-workflow-status" style="{{style:a}}">Change a component object's workflow status</a> with the target <code style="{{style:code}}">workflow_status</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Lay out a custom feature's form in two columns</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-features/set-a-custom-features-form-layout-and-attributes" style="{{style:a}}">Set a custom feature's form layout and attributes</a> with <code style="{{style:code}}">settings.form_layout</code> set to <code style="{{style:code}}">TWO_COLS</code> and the entries of <code style="{{style:code}}">column_1</code> and <code style="{{style:code}}">column_2</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Create a form for accounts</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-forms/create-a-custom-form" style="{{style:a}}">Create a custom form</a> with a <code style="{{style:code}}">name</code> and <code style="{{style:code}}">ACCOUNT</code> as <code style="{{style:code}}">setting_group</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Download the file stored in an account's file attribute</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/attribute-attachments/retrieve-an-attribute-attachment" style="{{style:a}}">Retrieve an attribute attachment</a> with the <code style="{{style:code}}">file_uuid</code> the attribute links to, then decode <code style="{{style:code}}">base64</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="{{style:h2}}">All endpoints</h2>
+
+<h3 style="{{style:h3}}">Custom attributes</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the custom attributes that add your own fields to records, and the <a href="{{MINTLIFY}}/custom-attributes" style="{{style:a}}">Custom attributes overview</a> explains each one.</p>
+
+{{endpoints:custom_attributes}}
+
+<h3 style="{{style:h3}}">Custom components</h3>
+
+<p style="{{style:p}}">These endpoints define custom components and create and manage their objects, notes, activities, linked records and workflow status, and the <a href="{{MINTLIFY}}/custom-components" style="{{style:a}}">Custom components overview</a> explains each one.</p>
+
+{{endpoints:custom_components}}
+
+<h3 style="{{style:h3}}">Custom features</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete custom features and set the form layout and attributes of a feature, and the <a href="{{MINTLIFY}}/custom-features" style="{{style:a}}">Custom features overview</a> explains each one.</p>
+
+{{endpoints:custom_features}}
+
+<h3 style="{{style:h3}}">Custom fields</h3>
+
+<p style="{{style:p}}">These endpoints list the custom fields in your settings and read one by its id, and the <a href="{{MINTLIFY}}/custom-fields" style="{{style:a}}">Custom fields overview</a> explains each one.</p>
+
+{{endpoints:custom_fields}}
+
+<h3 style="{{style:h3}}">Custom forms</h3>
+
+<p style="{{style:p}}">These endpoints list, create, read, update and delete the custom forms that set the layout of the forms used for records such as accounts, and the <a href="{{MINTLIFY}}/custom-forms" style="{{style:a}}">Custom forms overview</a> explains each one.</p>
+
+{{endpoints:custom_forms}}
+
+<h3 style="{{style:h3}}">Attribute attachments</h3>
+
+<p style="{{style:p}}">This endpoint downloads the file stored in a custom attribute of the file type, as base64 text, and the <a href="{{MINTLIFY}}/attribute-attachments" style="{{style:a}}">Attribute attachments overview</a> explains it.</p>
+
+{{endpoints:attribute_attachments}}
+
+<h2 style="{{style:h2}}">Good to know</h2>
+
+<div style="{{style:callout-warning}}">
+  <p style="{{style:callout-title}}">Replacing links unlinks what you leave out, and status changes run at once</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/custom-components/replace-the-accounts-or-orders-linked-to-a-component-object" style="{{style:a}}">Replace the accounts or orders linked to a component object</a> unlinks every record you leave out of <code style="{{style:code}}">domains</code>, so send the full set. To add one record, use <a href="{{MINTLIFY}}/api-reference/custom-components/link-accounts-or-orders-to-a-component-object" style="{{style:a}}">Link accounts or orders to a component object</a> instead. <a href="{{MINTLIFY}}/api-reference/custom-components/change-a-component-objects-workflow-status" style="{{style:a}}">Change a component object's workflow status</a> runs the transition, and any actions the workflow carries, at once.</p>
+</div>
+
+<div style="{{style:callout-info}}">
+  <p style="{{style:callout-title}}">Component paths take two kinds of id</p>
+  <p style="{{style:callout-body}}">Creating, updating and deleting a component instance on <code style="{{style:code}}">/component/{component_uuid}</code> take the component's dashed <code style="{{style:code}}">uuid</code>, and those instance bodies use the component's <code style="{{style:code}}">name</code>, such as <code style="{{style:code}}">service_contract</code>, as their key. Every other call takes the definition's <code style="{{style:code}}">cmp_</code> id, and object calls under <code style="{{style:code}}">/components/</code> use <code style="{{style:code}}">custom_component_object</code>.</p>
+</div>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}"><strong>Dropdown options go in as strings and come back as objects.</strong> Send <code style="{{style:code}}">options</code> as a list of strings; each option reads back with a <code style="{{style:code}}">name</code> and a <code style="{{style:code}}">display_order</code>.</li>
+  <li style="{{style:li}}"><strong>The custom feature path is singular.</strong> Call <code style="{{style:code}}">/custom_feature</code>. Writes put their fields inside <code style="{{style:code}}">component</code>, and the feature comes back under <code style="{{style:code}}">custom_feature</code>. A custom feature's id starts with <code style="{{style:code}}">cmp_</code>, the same id a component definition has.</li>
+  <li style="{{style:li}}"><strong>Component object notes are multipart forms.</strong> Put the text in the <code style="{{style:code}}">note</code> field and any files beside it. A file's <code style="{{style:code}}">uuid</code> in <code style="{{style:code}}">attachments</code> is the <code style="{{style:code}}">file_id</code> for the file calls.</li>
+  <li style="{{style:li}}"><strong>Only a form that is not system generated can be deleted.</strong> <code style="{{style:code}}">is_system_template</code> tells you which custom forms are system generated.</li>
+  <li style="{{style:li}}"><strong>Custom fields are read only here.</strong> There are no create, update or delete calls for them.</li>
+  <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. Send <code style="{{style:code}}">limit</code>, then pass the <code style="{{style:code}}">next_cursor</code> from <code style="{{style:code}}">pagination</code> as <code style="{{style:code}}">cursor</code> while <code style="{{style:code}}">has_more</code> is true.</li>
+</ul>
+
+<h2 style="{{style:h2}}">Related articles</h2>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}">Getting started with the Exsited API</li>
+  <li style="{{style:li}}">Installing the Exsited SDKs</li>
+</ul>

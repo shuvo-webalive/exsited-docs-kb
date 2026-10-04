@@ -64,6 +64,13 @@
       "subtitle": "Read and change how your Exsited instance is set up",
       "summary": "The 141 endpoints for instance settings, codes, periods, terms, countries, templates and roles, the tasks they cover and what to watch for.",
       "area": "Settings"
+    },
+    {
+      "file": "10-customisation.html",
+      "title": "Working with custom attributes, components and forms through the API",
+      "subtitle": "Add your own fields, record types and forms to Exsited",
+      "summary": "The 58 endpoints for custom attributes, components, features, fields, forms and attribute attachments, the tasks they cover and what to watch for.",
+      "area": "Customisation"
     }
   ]
 }
