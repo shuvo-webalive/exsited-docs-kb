@@ -1,4 +1,4 @@
-<p style="{{style:lead}}">The platform APIs let your software work with your customer portal, your integrations and the data around your Exsited instance. You can log portal users in and manage their passwords, read your integration connections, create external databases and work with their records, and read overview reports over a date range. You can also manage OAuth applications, read the root organisation, manage child organisations and read webhook deliveries. All thirty-five endpoints are available in all seven Exsited SDKs.</p>
+<p style="{{style:lead}}">The platform APIs let your software work with your customer portal, your integrations and the data around your Exsited instance. You can log portal users in and manage their passwords, read your integration connections, create external databases and work with their records, and read overview reports over a date range. You can also manage OAuth applications, read the root organisation, list child organisations and read webhook deliveries. All 35 endpoints are available in all seven Exsited SDKs.</p>
 
 <p style="{{style:button-row}}"><a href="{{MINTLIFY}}/portal" style="{{style:button}}">Open the Portal reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/reports" style="{{style:button}}">Open the Reports reference</a></p>
 
@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td style="{{style:td}}">Let a portal user who forgot their password choose a new one</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/portal/request-a-portal-password-reset-link" style="{{style:a}}">Request a portal password reset link</a>, then <a href="{{MINTLIFY}}/api-reference/portal/reset-a-portal-password-with-a-code" style="{{style:a}}">Reset a portal password with a code</a></td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/portal/request-a-portal-password-reset-link" style="{{style:a}}">Request a portal password reset link</a>, then <a href="{{MINTLIFY}}/api-reference/portal/reset-a-portal-password-with-a-code" style="{{style:a}}">Reset a portal password with a code</a>. Resetting with a valid code has not been confirmed to work yet</td>
     </tr>
     <tr>
       <td style="{{style:td}}">See which integrations are connected</td>
@@ -42,7 +42,7 @@
     </tr>
     <tr>
       <td style="{{style:td}}">Look up a webhook delivery you received</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/webhooks/retrieve-a-webhook-delivery" style="{{style:a}}">Retrieve a webhook delivery</a> with the <code style="{{style:code}}">whk_</code> id the delivery carries</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/webhooks/retrieve-a-webhook-delivery" style="{{style:a}}">Retrieve a webhook delivery</a> with the <code style="{{style:code}}">whk_</code> id the delivery carries. Only the <code style="{{style:code}}">404</code> for an unknown id has been confirmed so far, so the fields a delivery returns are not documented yet</td>
     </tr>
   </tbody>
 </table>
@@ -101,7 +101,7 @@
 
 <div style="{{style:callout-warning}}">
   <p style="{{style:callout-title}}">Some changes cannot be taken back</p>
-  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/portal/set-a-portal-password-by-email" style="{{style:a}}">Set a portal password by email</a> does not ask for the current password, and the old password cannot be put back. An external database cannot be deleted through the API; to put its tables back to a known state, create it again with <code style="{{style:code}}">replace</code> set to <code style="{{style:code}}">true</code>. Creating a child organisation changes your organisation hierarchy and assigns an existing user to it.</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/portal/set-a-portal-password-by-email" style="{{style:a}}">Set a portal password by email</a> does not ask for the current password, and the old password cannot be put back. An external database cannot be deleted through the API; to put its tables back to a known state, create it again with <code style="{{style:code}}">replace</code> set to <code style="{{style:code}}">true</code>. Creating a child organisation changes your organisation hierarchy and assigns an existing user to it, and depends on your licence. Creating, reading, updating and deleting one child organisation have not been confirmed to work yet, and the fields a child organisation takes are not documented yet.</p>
 </div>
 
 <div style="{{style:callout-info}}">

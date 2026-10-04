@@ -1,4 +1,4 @@
-<p style="{{style:lead}}">The customisation APIs let your software add your own fields and record types to Exsited. You can define custom attributes and attach them to records such as accounts, define custom components and manage their objects, notes, activity, linked records and workflow status, and set up custom features with their own form layout. You can also read your custom fields, manage custom forms and download the file a file attribute holds. All fifty-eight endpoints are available in all seven Exsited SDKs.</p>
+<p style="{{style:lead}}">The customisation APIs let your software add your own fields and record types to Exsited. You can define custom attributes and attach them to records such as accounts, define custom components and manage their objects, notes, activity, linked records and workflow status, and set up custom features with their own form layout. You can also read your custom fields, manage custom forms and download the file a file attribute holds. All 58 endpoints are available in all seven Exsited SDKs.</p>
 
 <p style="{{style:button-row}}"><a href="{{MINTLIFY}}/custom-attributes" style="{{style:button}}">Open the Custom attributes reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/custom-components" style="{{style:button}}">Open the Custom components reference</a></p>
 
@@ -25,12 +25,8 @@
       <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-components/create-a-component-object" style="{{style:a}}">Create a component object</a> inside <code style="{{style:code}}">custom_component_object</code>, naming the owning account in <code style="{{style:code}}">parents</code></td>
     </tr>
     <tr>
-      <td style="{{style:td}}">Link accounts or orders to a component object</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-components/link-accounts-or-orders-to-a-component-object" style="{{style:a}}">Link accounts or orders to a component object</a> with a <code style="{{style:code}}">domain_type</code> and the records in <code style="{{style:code}}">domains[].domain_id</code></td>
-    </tr>
-    <tr>
       <td style="{{style:td}}">Move a component object to its next workflow status</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-components/change-a-component-objects-workflow-status" style="{{style:a}}">Change a component object's workflow status</a> with the target <code style="{{style:code}}">workflow_status</code></td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/custom-components/change-a-component-objects-workflow-status" style="{{style:a}}">Change a component object's workflow status</a> with the target <code style="{{style:code}}">workflow_status</code>. This call has not been confirmed to work yet, so read the object afterwards to check its status</td>
     </tr>
     <tr>
       <td style="{{style:td}}">Lay out a custom feature's form in two columns</td>
@@ -89,7 +85,7 @@
 
 <div style="{{style:callout-warning}}">
   <p style="{{style:callout-title}}">Replacing links unlinks what you leave out, and status changes run at once</p>
-  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/custom-components/replace-the-accounts-or-orders-linked-to-a-component-object" style="{{style:a}}">Replace the accounts or orders linked to a component object</a> unlinks every record you leave out of <code style="{{style:code}}">domains</code>, so send the full set. To add one record, use <a href="{{MINTLIFY}}/api-reference/custom-components/link-accounts-or-orders-to-a-component-object" style="{{style:a}}">Link accounts or orders to a component object</a> instead. <a href="{{MINTLIFY}}/api-reference/custom-components/change-a-component-objects-workflow-status" style="{{style:a}}">Change a component object's workflow status</a> runs the transition, and any actions the workflow carries, at once.</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/custom-components/replace-the-accounts-or-orders-linked-to-a-component-object" style="{{style:a}}">Replace the accounts or orders linked to a component object</a> unlinks every record you leave out of <code style="{{style:code}}">domains</code>, so send the full set. Replacing and <a href="{{MINTLIFY}}/api-reference/custom-components/link-accounts-or-orders-to-a-component-object" style="{{style:a}}">Link accounts or orders to a component object</a> currently return <code style="{{style:code}}">500</code> for an account, so read the object afterwards before you rely on either call. <a href="{{MINTLIFY}}/api-reference/custom-components/change-a-component-objects-workflow-status" style="{{style:a}}">Change a component object's workflow status</a> runs the transition, and any actions the workflow carries, at once, and it has not been confirmed to work yet.</p>
 </div>
 
 <div style="{{style:callout-info}}">
@@ -100,7 +96,7 @@
 <ul style="{{style:ul}}">
   <li style="{{style:li}}"><strong>Dropdown options go in as strings and come back as objects.</strong> Send <code style="{{style:code}}">options</code> as a list of strings; each option reads back with a <code style="{{style:code}}">name</code> and a <code style="{{style:code}}">display_order</code>.</li>
   <li style="{{style:li}}"><strong>The custom feature path is singular.</strong> Call <code style="{{style:code}}">/custom_feature</code>. Writes put their fields inside <code style="{{style:code}}">component</code>, and the feature comes back under <code style="{{style:code}}">custom_feature</code>. A custom feature's id starts with <code style="{{style:code}}">cmp_</code>, the same id a component definition has.</li>
-  <li style="{{style:li}}"><strong>Component object notes are multipart forms.</strong> Put the text in the <code style="{{style:code}}">note</code> field and any files beside it. A file's <code style="{{style:code}}">uuid</code> in <code style="{{style:code}}">attachments</code> is the <code style="{{style:code}}">file_id</code> for the file calls.</li>
+  <li style="{{style:li}}"><strong>Component object notes are multipart forms.</strong> Put the text in the <code style="{{style:code}}">note</code> field and any files beside it. A file's <code style="{{style:code}}">uuid</code> in <code style="{{style:code}}">attachments</code> is the <code style="{{style:code}}">file_id</code> for the file calls. <a href="{{MINTLIFY}}/api-reference/custom-components/delete-a-file-from-a-component-objects-note" style="{{style:a}}">Delete a file from a component object's note</a> currently returns <code style="{{style:code}}">404</code>, even for a file the note lists.</li>
   <li style="{{style:li}}"><strong>Only a form that is not system generated can be deleted.</strong> <code style="{{style:code}}">is_system_template</code> tells you which custom forms are system generated.</li>
   <li style="{{style:li}}"><strong>Custom fields are read only here.</strong> There are no create, update or delete calls for them.</li>
   <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. Send <code style="{{style:code}}">limit</code>, then pass the <code style="{{style:code}}">next_cursor</code> from <code style="{{style:code}}">pagination</code> as <code style="{{style:code}}">cursor</code> while <code style="{{style:code}}">has_more</code> is true.</li>

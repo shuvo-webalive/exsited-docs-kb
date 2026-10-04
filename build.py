@@ -117,12 +117,13 @@ def endpoint_table(module):
             '<tr><td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/%s/%s" style="{{style:a}}">%s</a>'
             '<br><span style="font-size: 14px; color: %s;">%s</span></td>'
             '<td style="{{style:td}} white-space: nowrap;">%s</td>'
-            '<td style="{{style:td}}"><code style="{{style:code}}">%s</code></td></tr>'
+            '<td style="{{style:td}}"><code style="{{style:code}} word-break: break-all;">%s</code></td></tr>'
             % (module.SLUG, endpoint["slug"], endpoint["title"], MUTED,
                re.sub(r"`([^`]+)`", r"\1", endpoint["summary"]), badge(endpoint["method"]),
-               endpoint["path"].replace(module.BASE, "…" + module.BASE[module.BASE.rfind("/"):])))
-    return ('<table style="{{style:table}}"><thead><tr>'
-            '<th style="{{style:th}}">Endpoint</th><th style="{{style:th}}">Method</th><th style="{{style:th}}">Path</th>'
+               endpoint["path"]))
+    return ('<table style="{{style:table}} table-layout: fixed;"><thead><tr>'
+            '<th style="{{style:th}} width: 45%;">Endpoint</th><th style="{{style:th}} width: 90px;">Method</th>'
+            '<th style="{{style:th}}">Path</th>'
             '</tr></thead><tbody>' + "".join(rows) + "</tbody></table>")
 
 

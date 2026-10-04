@@ -1,4 +1,4 @@
-<p style="{{style:lead}}">The Accounts APIs let your software work with the customers and suppliers you bill and buy from. You can create, read, change, cancel and delete accounts, manage their contacts, addresses, payment methods, billing preferences and notes, and list the orders, invoices, payments and other records that belong to each account. You can also sort accounts into groups, manage communication profiles and email documents such as invoices and account statements. All seventy-seven endpoints are available in all seven Exsited SDKs.</p>
+<p style="{{style:lead}}">The Accounts APIs let your software work with the customers and suppliers you bill and buy from. You can create, read, change, cancel and delete accounts, manage their contacts, addresses, payment methods, billing preferences and notes, and list the orders, invoices, payments and other records that belong to each account. You can also sort accounts into groups, manage communication profiles and email documents such as invoices and account statements. All 77 endpoints are available in all seven Exsited SDKs.</p>
 
 <p style="{{style:button-row}}"><a href="{{MINTLIFY}}/accounts" style="{{style:button}}">Open the Accounts reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/communications" style="{{style:button}}">Open the Communications reference</a></p>
 
@@ -34,7 +34,7 @@
     </tr>
     <tr>
       <td style="{{style:td}}">Close an account from a date, or open it again</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/cancel-an-account" style="{{style:a}}">Cancel an account</a> with an <code style="{{style:code}}">effective_date</code>, then <a href="{{MINTLIFY}}/api-reference/accounts/reactivate-an-account" style="{{style:a}}">Reactivate an account</a> with the same body when you need it back</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/accounts/cancel-an-account" style="{{style:a}}">Cancel an account</a> with an <code style="{{style:code}}">effective_date</code>, then <a href="{{MINTLIFY}}/api-reference/accounts/reactivate-an-account" style="{{style:a}}">Reactivate an account</a> with the same body when you need it back. Reactivating has not been confirmed to work yet</td>
     </tr>
     <tr>
       <td style="{{style:td}}">See the invoices that belong to one account</td>
@@ -42,7 +42,7 @@
     </tr>
     <tr>
       <td style="{{style:td}}">Email an invoice or an account statement to a customer</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/communications/email-a-document" style="{{style:a}}">Email a document</a>, naming the document and the recipients in <code style="{{style:code}}">to</code></td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/communications/email-a-document" style="{{style:a}}">Email a document</a>, naming the document and the recipients in <code style="{{style:code}}">to</code>. This call has not been confirmed to work yet, and its exact body format is not documented yet</td>
     </tr>
   </tbody>
 </table>
@@ -83,7 +83,7 @@
 
 <div style="{{style:callout-warning}}">
   <p style="{{style:callout-title}}">Purging an account cannot be undone, and emails are real</p>
-  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/accounts/purge-an-account" style="{{style:a}}">Purge an account</a> removes the account and its records permanently. If you only want to stop working with an account, use <a href="{{MINTLIFY}}/api-reference/accounts/cancel-an-account" style="{{style:a}}">Cancel an account</a> instead. <a href="{{MINTLIFY}}/api-reference/communications/email-a-document" style="{{style:a}}">Email a document</a> and <a href="{{MINTLIFY}}/api-reference/accounts/send-and-log-an-email" style="{{style:a}}">Send and log an email</a> send real email to the recipients you name, so use addresses you control when you try them.</p>
+  <p style="{{style:callout-body}}"><a href="{{MINTLIFY}}/api-reference/accounts/purge-an-account" style="{{style:a}}">Purge an account</a> removes the account and its records permanently. If you only want to stop working with an account, use <a href="{{MINTLIFY}}/api-reference/accounts/cancel-an-account" style="{{style:a}}">Cancel an account</a> instead. <a href="{{MINTLIFY}}/api-reference/communications/email-a-document" style="{{style:a}}">Email a document</a> and <a href="{{MINTLIFY}}/api-reference/accounts/send-and-log-an-email" style="{{style:a}}">Send and log an email</a> send real email to the recipients you name, so use addresses you control when you try them. None of these three calls has been confirmed to work yet.</p>
 </div>
 
 <div style="{{style:callout-info}}">
@@ -97,7 +97,7 @@
   <li style="{{style:li}}"><strong>Some fields are written one way and read back another.</strong> <code style="{{style:code}}">currency</code> and <code style="{{style:code}}">time_zone</code> go in as a code and a name and read back as objects, an address is written with <code style="{{style:code}}">post_code</code> and reads back with <code style="{{style:code}}">postal_code</code>, and a contact's <code style="{{style:code}}">first_name</code> and <code style="{{style:code}}">last_name</code> read back under <code style="{{style:code}}">name</code>.</li>
   <li style="{{style:li}}"><strong>An account with orders, invoices or payments cannot be deleted.</strong> <a href="{{MINTLIFY}}/api-reference/accounts/delete-an-account" style="{{style:a}}">Delete an account</a> returns <code style="{{style:code}}">409</code> for it, and retrying does not help.</li>
   <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code> with a <code style="{{style:code}}">pagination</code> object. While <code style="{{style:code}}">has_more</code> is <code style="{{style:code}}">true</code>, send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to get the next page.</li>
-  <li style="{{style:li}}"><strong>Only unused groups and non-default profiles can be deleted.</strong> An account group can be deleted only when no account uses it, and the default communication profile cannot be deleted.</li>
+  <li style="{{style:li}}"><strong>Account groups cannot yet be changed or removed, and communication profiles cannot yet be created.</strong> <a href="{{MINTLIFY}}/api-reference/account-groups/update-an-account-group" style="{{style:a}}">Update an account group</a> and <a href="{{MINTLIFY}}/api-reference/account-groups/delete-an-account-group" style="{{style:a}}">Delete an account group</a> currently return <code style="{{style:code}}">500</code>, even for a group just created, and <a href="{{MINTLIFY}}/api-reference/communication-profiles/create-a-communication-profile" style="{{style:a}}">Create a communication profile</a> currently returns <code style="{{style:code}}">500</code> and creates nothing, so you can change and delete only profiles that already exist. Once these work, an account group can be deleted only when no account uses it, and the default communication profile cannot be deleted.</li>
 </ul>
 
 <h2 style="{{style:h2}}">Related articles</h2>

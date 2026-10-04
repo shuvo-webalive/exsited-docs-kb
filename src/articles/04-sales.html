@@ -1,4 +1,4 @@
-<p style="{{style:lead}}">The sales APIs let your software handle what your accounts buy and pay for. You can create and change orders, quotes and contracts, record usage on metered lines, raise and amend invoices and pro-forma invoices, record payments, issue credit notes and refunds, and manage gift certificates and sales reps. You can also read credit note applications and the payments and refunds in a bank reconciliation. All one hundred and sixty-five endpoints are available in all seven Exsited SDKs.</p>
+<p style="{{style:lead}}">The sales APIs let your software handle what your accounts buy and pay for. You can create and change orders, quotes and contracts, record usage on metered lines, raise and amend invoices and pro-forma invoices, record payments, issue credit notes and refunds, and manage gift certificates and sales reps. You can also read credit note applications and list the payments and refunds in a bank reconciliation, though those two lists are not yet confirmed to work. All 165 endpoints are available in all seven Exsited SDKs.</p>
 
 <p style="{{style:button-row}}"><a href="{{MINTLIFY}}/orders" style="{{style:button}}">Open the Orders reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/invoices" style="{{style:button}}">Open the Invoices reference</a></p>
 
@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td style="{{style:td}}">Create an active order and its invoice in one call</td>
-      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/express/create-an-express-order" style="{{style:a}}">Create an express order</a>, naming the account by <code style="{{style:code}}">id</code> and putting the order under <code style="{{style:code}}">account.order</code></td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/express/create-an-order-with-its-invoice" style="{{style:a}}">Create an order with its invoice</a>, naming the account by <code style="{{style:code}}">id</code> and putting the order under <code style="{{style:code}}">account.order</code></td>
     </tr>
     <tr>
       <td style="{{style:td}}">Check the price of an order before you create it</td>
@@ -123,7 +123,7 @@
 
 <h3 style="{{style:h3}}">Reconciliations</h3>
 
-<p style="{{style:p}}">These endpoints list the payments and the refunds included in one bank reconciliation, and the <a href="{{MINTLIFY}}/reconciliations" style="{{style:a}}">Reconciliations overview</a> explains each one.</p>
+<p style="{{style:p}}">These endpoints list the payments and the refunds included in one bank reconciliation, though no successful response from either list has been confirmed yet, and the <a href="{{MINTLIFY}}/reconciliations" style="{{style:a}}">Reconciliations overview</a> explains each one.</p>
 
 {{endpoints:reconciliations}}
 
@@ -140,12 +140,12 @@
 </div>
 
 <ul style="{{style:ul}}">
-  <li style="{{style:li}}"><strong>Pass an invoice's id, never its uuid.</strong> Every invoice path takes the invoice's <code style="{{style:code}}">id</code>, such as <code style="{{style:code}}">INV-0001</code>.</li>
+  <li style="{{style:li}}"><strong>Pass an invoice's id, never its uuid.</strong> Every invoice path takes the invoice's <code style="{{style:code}}">id</code>, such as <code style="{{style:code}}">INV-0001</code>. An entry in <a href="{{MINTLIFY}}/api-reference/invoices/list-invoices" style="{{style:a}}">List invoices</a> has no <code style="{{style:code}}">lines</code>; retrieve the invoice, or list its lines, to see them.</li>
   <li style="{{style:li}}"><strong>Most write bodies sit under one key.</strong> Orders use <code style="{{style:code}}">order</code>, invoices <code style="{{style:code}}">invoice</code>, payments <code style="{{style:code}}">payment</code>, refunds <code style="{{style:code}}">refund</code> and credit notes <code style="{{style:code}}">credit_note</code>. The order <code style="{{style:code}}">upgrade</code>, <code style="{{style:code}}">downgrade</code> and <code style="{{style:code}}">contract_adjustment</code> calls and their previews are the exception: they take <code style="{{style:code}}">effective_date</code> and <code style="{{style:code}}">lines</code> at the top level.</li>
   <li style="{{style:li}}"><strong>A contract needs a recurring or metered item on a line.</strong> Set <code style="{{style:code}}">allow_contract</code> to <code style="{{style:code}}">true</code> and send <code style="{{style:code}}">contract_properties</code> when you create the order.</li>
-  <li style="{{style:li}}"><strong>Money mostly comes back as text.</strong> Amounts such as an invoice's <code style="{{style:code}}">total</code> or a refund's <code style="{{style:code}}">amount</code> are strings like <code style="{{style:code}}">"12.00"</code>. A credit note application's <code style="{{style:code}}">amount</code> and <code style="{{style:code}}">remaining_balance</code> are numbers.</li>
-  <li style="{{style:li}}"><strong>Only a single read of an invoice carries its lines.</strong> An entry in <a href="{{MINTLIFY}}/api-reference/invoices/list-invoices" style="{{style:a}}">List invoices</a> has no <code style="{{style:code}}">lines</code>; retrieve the invoice, or list its lines, to see them.</li>
-  <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. While <code style="{{style:code}}">pagination.has_more</code> is <code style="{{style:code}}">true</code>, send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to get the next page.</li>
+  <li style="{{style:li}}"><strong>Money mostly comes back as text, and lists come a page at a time.</strong> Amounts such as an invoice's <code style="{{style:code}}">total</code> or a refund's <code style="{{style:code}}">amount</code> are strings like <code style="{{style:code}}">"12.00"</code>. A credit note application's <code style="{{style:code}}">amount</code> and <code style="{{style:code}}">remaining_balance</code> are numbers. Listings put their records under <code style="{{style:code}}">data</code>. While <code style="{{style:code}}">pagination.has_more</code> is <code style="{{style:code}}">true</code>, send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to get the next page.</li>
+  <li style="{{style:li}}"><strong>Reading one invoice line always returns the first line.</strong> <a href="{{MINTLIFY}}/api-reference/invoices/retrieve-an-invoice-line" style="{{style:a}}">Retrieve an invoice line</a> ignores the line id, so use <a href="{{MINTLIFY}}/api-reference/invoices/list-an-invoices-lines" style="{{style:a}}">List an invoice's lines</a> to find a specific one. <a href="{{MINTLIFY}}/api-reference/invoices/delete-an-invoice-note-file" style="{{style:a}}">Delete an invoice note file</a> currently returns <code style="{{style:code}}">404</code> <code style="{{style:code}}">attachment not found</code>, even for a file the note's files listing shows.</li>
+  <li style="{{style:li}}"><strong>Creating a sales rep currently fails.</strong> <a href="{{MINTLIFY}}/api-reference/sales-reps/create-a-sales-rep" style="{{style:a}}">Create a sales rep</a> returns <code style="{{style:code}}">400</code> <code style="{{style:code}}">validation_error</code>, naming no field, even for a valid body, so you can update and delete only reps that already exist.</li>
 </ul>
 
 <h2 style="{{style:h2}}">Related articles</h2>
