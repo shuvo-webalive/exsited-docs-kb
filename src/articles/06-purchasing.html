@@ -1,0 +1,138 @@
+<p style="{{style:lead}}">The purchasing APIs let your software handle what you buy from your suppliers. You can create, change, cancel and read purchase orders, record supplier bills as purchase invoices, pay suppliers, and track the credit a supplier owes you through purchase credit notes and refunds. You can also send purchased stock back to a supplier, generate ABA files from purchase payments and set up receive terms. All eighty-nine endpoints are available in all seven Exsited SDKs.</p>
+
+<p style="{{style:button-row}}"><a href="{{MINTLIFY}}/purchase-orders" style="{{style:button}}">Open the Purchase orders reference</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{MINTLIFY}}/purchase-payments" style="{{style:button}}">Open the Purchase payments reference</a></p>
+
+<h2 style="{{style:h2}}">Common tasks</h2>
+
+<table style="{{style:table}}">
+  <thead>
+    <tr>
+      <th style="{{style:th}}">You want to</th>
+      <th style="{{style:th}}">Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="{{style:td}}">Order goods from a supplier</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/purchase-orders/create-a-purchase-order" style="{{style:a}}">Create a purchase order</a> with the supplier's <code style="{{style:code}}">account_id</code> and its lines, inside <code style="{{style:code}}">purchase_order</code>. Send <code style="{{style:code}}">"draft": true</code> to save it as a draft</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Add or change lines on a purchase order</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/purchase-orders/change-a-purchase-orders-lines" style="{{style:a}}">Change a purchase order's lines</a>, giving each entry an <code style="{{style:code}}">op</code> of <code style="{{style:code}}">add</code> or <code style="{{style:code}}">change</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Record the supplier's bill for a purchase order</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/purchase-orders/create-a-purchase-invoice-from-a-purchase-order" style="{{style:a}}">Create a purchase invoice from a purchase order</a> with <code style="{{style:code}}">{"purchase_invoice": {}}</code> as the body</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Pay one purchase invoice</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/purchase-payments/create-a-purchase-payment-for-a-purchase-invoice" style="{{style:a}}">Create a purchase payment for a purchase invoice</a>, sending only <code style="{{style:code}}">payment_method_applications</code> inside <code style="{{style:code}}">purchase_payment</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Create a purchase order and its bill and payment in one call</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/purchase-express/create-a-purchase-order-in-one-call" style="{{style:a}}">Create a purchase order in one call</a>, with the supplier in <code style="{{style:code}}">account.id</code> and the order in <code style="{{style:code}}">account.purchase_order</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Record money a supplier pays back</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/purchase-refunds/create-a-purchase-refund-from-a-purchase-credit-note" style="{{style:a}}">Create a purchase refund from a purchase credit note</a>, with the reference of one of the supplier's payment methods as <code style="{{style:code}}">payment_method</code></td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Send purchased stock back to a supplier</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/return-vendor-authorizations/create-a-return-vendor-authorization" style="{{style:a}}">Create a return vendor authorization</a>, naming the purchase order and each line with the <code style="{{style:code}}">rva_qty</code> to return</td>
+    </tr>
+    <tr>
+      <td style="{{style:td}}">Build an ABA file from purchase payments</td>
+      <td style="{{style:td}}"><a href="{{MINTLIFY}}/api-reference/aba-files/generate-an-aba-file" style="{{style:a}}">Generate an ABA file</a>, listing each payment's <code style="{{style:code}}">id</code> under <code style="{{style:code}}">aba_file.transactions</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="{{style:h2}}">All endpoints</h2>
+
+<h3 style="{{style:h3}}">Purchase orders</h3>
+
+<p style="{{style:p}}">These endpoints create, update, change, cancel and reactivate purchase orders, read their lines, KPIs, purchase invoices and payments and manage their notes and files, and the <a href="{{MINTLIFY}}/purchase-orders" style="{{style:a}}">Purchase orders overview</a> explains each one.</p>
+
+{{endpoints:purchase_orders}}
+
+<h3 style="{{style:h3}}">Purchase invoices</h3>
+
+<p style="{{style:p}}">These endpoints create, amend, cancel and reactivate purchase invoices, read their lines, payments and credit note applications and manage their notes and files, and the <a href="{{MINTLIFY}}/purchase-invoices" style="{{style:a}}">Purchase invoices overview</a> explains each one.</p>
+
+{{endpoints:purchase_invoices}}
+
+<h3 style="{{style:h3}}">Purchase payments</h3>
+
+<p style="{{style:p}}">These endpoints record, update, delete and read payments to suppliers, list the purchase credit notes a payment raised and manage payment notes and their files, and the <a href="{{MINTLIFY}}/purchase-payments" style="{{style:a}}">Purchase payments overview</a> explains each one.</p>
+
+{{endpoints:purchase_payments}}
+
+<h3 style="{{style:h3}}">Purchase refunds</h3>
+
+<p style="{{style:p}}">These endpoints record refunds from suppliers against purchase credit notes and read, update and delete them, and the <a href="{{MINTLIFY}}/purchase-refunds" style="{{style:a}}">Purchase refunds overview</a> explains each one.</p>
+
+{{endpoints:purchase_refunds}}
+
+<h3 style="{{style:h3}}">Purchase credit notes</h3>
+
+<p style="{{style:p}}">These endpoints create, read, update, apply and delete purchase credit notes, the credit a supplier owes you, and add or remove their notes, and the <a href="{{MINTLIFY}}/purchase-credit-notes" style="{{style:a}}">Purchase credit notes overview</a> explains each one.</p>
+
+{{endpoints:purchase_credit_notes}}
+
+<h3 style="{{style:h3}}">Purchase credit note applications</h3>
+
+<p style="{{style:p}}">These endpoints list and read the records of purchase credit notes spent on purchase invoices, and the <a href="{{MINTLIFY}}/purchase-credit-note-applications" style="{{style:a}}">Purchase credit note applications overview</a> explains each one.</p>
+
+{{endpoints:purchase_credit_note_applications}}
+
+<h3 style="{{style:h3}}">Purchase express</h3>
+
+<p style="{{style:p}}">This endpoint creates a purchase order, with its purchase invoice and payment if you nest them, in a single call, and the <a href="{{MINTLIFY}}/purchase-express" style="{{style:a}}">Purchase express overview</a> explains it.</p>
+
+{{endpoints:purchase_express}}
+
+<h3 style="{{style:h3}}">Return vendor authorizations</h3>
+
+<p style="{{style:p}}">These endpoints create, list, read, update and delete returns of purchased stock to a supplier and remove their notes and files, and the <a href="{{MINTLIFY}}/return-vendor-authorizations" style="{{style:a}}">Return vendor authorizations overview</a> explains each one.</p>
+
+{{endpoints:return_vendor_authorizations}}
+
+<h3 style="{{style:h3}}">ABA files</h3>
+
+<p style="{{style:p}}">This endpoint generates an ABA file from the transactions you name, such as purchase payments, and the <a href="{{MINTLIFY}}/aba-files" style="{{style:a}}">ABA files overview</a> explains it.</p>
+
+{{endpoints:aba_files}}
+
+<h3 style="{{style:h3}}">Receive terms</h3>
+
+<p style="{{style:p}}">These endpoints create, list, read, update, enable, disable and delete the receive terms in your settings, and the <a href="{{MINTLIFY}}/receive-terms" style="{{style:a}}">Receive terms overview</a> explains each one.</p>
+
+{{endpoints:receive_terms}}
+
+<h2 style="{{style:h2}}">Good to know</h2>
+
+<div style="{{style:callout-warning}}">
+  <p style="{{style:callout-title}}">Deletes cannot be undone, so cancel when you can</p>
+  <p style="{{style:callout-body}}">Deleting a purchase order, purchase invoice, purchase payment, purchase refund or purchase credit note, or one of their notes or files, cannot be undone. If you may need a purchase order or purchase invoice again, cancel it instead: <a href="{{MINTLIFY}}/api-reference/purchase-orders/cancel-a-purchase-order" style="{{style:a}}">Cancel a purchase order</a> and <a href="{{MINTLIFY}}/api-reference/purchase-invoices/cancel-a-purchase-invoice" style="{{style:a}}">Cancel a purchase invoice</a> set the status to <code style="{{style:code}}">inactive</code>, and the reactivate calls set it back to <code style="{{style:code}}">active</code>. Only a draft return vendor authorization can be deleted; any other status returns <code style="{{style:code}}">400</code> <code style="{{style:code}}">stock_committed</code>.</p>
+</div>
+
+<div style="{{style:callout-info}}">
+  <p style="{{style:callout-title}}">Overpaying a supplier raises a purchase credit note</p>
+  <p style="{{style:callout-body}}">A purchase payment that pays more than its invoices take raises a purchase credit note. <a href="{{MINTLIFY}}/api-reference/purchase-payments/list-a-purchase-payments-purchase-credit-notes" style="{{style:a}}">List a purchase payment's purchase credit notes</a> shows it. Applying a purchase credit note to purchase invoices in turn records a purchase payment.</p>
+</div>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}"><strong>Each record type has its own wrapper key.</strong> Write bodies go inside <code style="{{style:code}}">purchase_order</code>, <code style="{{style:code}}">purchase_invoice</code>, <code style="{{style:code}}">purchase_payment</code>, <code style="{{style:code}}">purchase_refund</code>, <code style="{{style:code}}">purchase_credit_note</code> or <code style="{{style:code}}">return_vendor_authorization</code>. The cancel and reactivate calls take an empty object.</li>
+  <li style="{{style:li}}"><strong>Purchase order note calls take the purchase order's code, not its id.</strong> That covers listing, creating, reading and deleting notes and their files.</li>
+  <li style="{{style:li}}"><strong>Some calls take only the prefixed id.</strong> The purchase credit note apply, note and delete calls take the <code style="{{style:code}}">pcn_</code> id, and deleting a return vendor authorization takes the <code style="{{style:code}}">rva_</code> id. The reads accept either the id or the code.</li>
+  <li style="{{style:li}}"><strong>Amounts are decimal strings.</strong> Send purchase payment amounts as text, such as <code style="{{style:code}}">"1.00"</code>.</li>
+  <li style="{{style:li}}"><strong>A purchase refund's amount cannot change.</strong> <a href="{{MINTLIFY}}/api-reference/purchase-refunds/update-a-purchase-refund" style="{{style:a}}">Update a purchase refund</a> takes only <code style="{{style:code}}">alternate_date</code>, <code style="{{style:code}}">reference</code>, <code style="{{style:code}}">note</code> and <code style="{{style:code}}">custom_attributes</code>; any other key returns <code style="{{style:code}}">400</code>.</li>
+  <li style="{{style:li}}"><strong>Lists come a page at a time.</strong> Records come under <code style="{{style:code}}">data</code>. While <code style="{{style:code}}">pagination.has_more</code> is <code style="{{style:code}}">true</code>, send <code style="{{style:code}}">pagination.next_cursor</code> as <code style="{{style:code}}">cursor</code> to get the next page.</li>
+</ul>
+
+<h2 style="{{style:h2}}">Related articles</h2>
+
+<ul style="{{style:ul}}">
+  <li style="{{style:li}}">Getting started with the Exsited API</li>
+  <li style="{{style:li}}">Installing the Exsited SDKs</li>
+</ul>
