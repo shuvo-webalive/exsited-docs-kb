@@ -71,6 +71,13 @@
       "subtitle": "Add your own fields, record types and forms to Exsited",
       "summary": "The 58 endpoints for custom attributes, components, features, fields, forms and attribute attachments, the tasks they cover and what to watch for.",
       "area": "Customisation"
+    },
+    {
+      "file": "11-platform.html",
+      "title": "Working with portals, integrations and reports through the API",
+      "subtitle": "Work with your customer portal, integrations, reports and organisations",
+      "summary": "The 35 endpoints for the portal, integration connections, external databases, reports, applications, organisations and webhooks, the tasks they cover and what to watch for.",
+      "area": "Platform"
     }
   ]
 }
