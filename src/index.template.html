@@ -193,6 +193,7 @@
     color: var(--muted);
   }
   .view { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .rich { position: fixed; left: -10000px; top: 0; width: 900px; }
   .view button { padding: 4px 12px; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; }
   .view button[aria-pressed="true"] { background: var(--ink); color: #fff; }
   .frame iframe { display: block; width: 100%; min-height: 600px; border: 0; }
@@ -260,6 +261,7 @@
       <pre class="code" id="code"></pre>
     </div>
     <textarea class="clip" id="clip" aria-hidden="true" tabindex="-1"></textarea>
+    <div class="rich" id="rich" aria-hidden="true"></div>
   </section>
 </main>
 
@@ -394,10 +396,11 @@
       fields.innerHTML = field('Title', entry.title, '', 'Copy title', 'title', false)
         + field('Subtitle', entry.subtitle, '', 'Copy subtitle', 'subtitle', false)
         + field('Category', data.category.name, '', 'Copy category', 'categoryName', false)
-        + field('Body', '', Math.max(1, Math.round(entry.size / 1024)) + ' KB of HTML', 'Copy HTML', 'html', true);
+        + field('Body', '', 'formatted text, ready to paste', 'Copy article', 'rich', true)
+        + field('Body as HTML', '', Math.max(1, Math.round(entry.size / 1024)) + ' KB, only for a Source code view', 'Copy HTML', 'html', false);
       steps.innerHTML = '<li>In HubSpot, create an article in <strong>' + escapeHtml(data.category.name) + '</strong>. Paste the <strong>title</strong> and <strong>subtitle</strong>.</li>'
-        + '<li>In the body toolbar, open <strong>Source code</strong>.</li>'
-        + '<li>Paste the <strong>HTML</strong>, save, then preview before you publish.</li>';
+        + '<li>Click <strong>Copy article</strong>, click into the article body in HubSpot and press <strong>Ctrl+V</strong> (<strong>Cmd+V</strong> on a Mac). Headings, lists, tables, links and code keep their formatting.</li>'
+        + '<li>Save, then preview before you publish.</li>';
       document.getElementById('code').textContent = entry.html;
     }
     fields.querySelectorAll('.copy').forEach(button => button.addEventListener('click', () => copyField(button)));
@@ -418,24 +421,62 @@
     }
   }
 
+  function plainText(html) {
+    const holder = document.createElement('div');
+    holder.innerHTML = html;
+    return holder.innerText;
+  }
+
+  async function writeRich(html) {
+    const text = plainText(html);
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      try {
+        await navigator.clipboard.write([new ClipboardItem({
+          'text/html': new Blob([html], { type: 'text/html' }),
+          'text/plain': new Blob([text], { type: 'text/plain' }),
+        })]);
+        return;
+      } catch (error) {
+      }
+    }
+    const holder = document.getElementById('rich');
+    holder.innerHTML = html;
+    const range = document.createRange();
+    range.selectNodeContents(holder);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const done = document.execCommand('copy');
+    selection.removeAllRanges();
+    holder.innerHTML = '';
+    if (!done) throw new Error('copy failed');
+  }
+
   async function copyField(button) {
     const entry = entries[current];
     const key = button.dataset.copy;
     const value = key === 'categoryName' ? data.category.name
+      : key === 'rich' ? entry.html
       : entry.kind === 'category' ? entry.category[key] : entry[key];
     try {
-      await writeText(value);
+      if (key === 'rich') {
+        await writeRich(value);
+      } else {
+        await writeText(value);
+      }
     } catch (error) {
-      document.getElementById('status').textContent = 'Copy failed. Open the HTML view and copy it by hand.';
+      document.getElementById('status').textContent = 'Copy failed. Select the article in the preview and copy it (Ctrl+C), then paste it into HubSpot.';
       return;
     }
     button.classList.add('done');
     button.querySelector('span').textContent = 'Copied';
-    if (key === 'html') {
+    if (key === 'rich' || key === 'html') {
       copied.add(entry.id);
       sessionStorage.setItem('kb-copied', JSON.stringify([...copied]));
       buttons[current].classList.add('copied');
-      document.getElementById('status').textContent = 'Copied. Paste it into the Source code view in HubSpot.';
+      document.getElementById('status').textContent = key === 'rich'
+        ? 'Copied. Click into the article body in HubSpot and paste.'
+        : 'Copied as HTML. Paste it into a Source code view.';
     }
     setTimeout(() => {
       button.classList.remove('done');
