@@ -5,13 +5,15 @@ lets you copy each one. The full reference lives on the Mintlify site; every art
 
 ## Using the copy page
 
-Open the published page (GitHub Pages), pick an article, click **Copy HTML**, then in HubSpot:
+Open the published page (GitHub Pages) and pick an article. Then, in HubSpot:
 
-1. Open the article and set its title to the one shown on the page.
-2. In the body toolbar, open **Source code**.
-3. Paste, save, then preview before you publish.
+1. Create the article in the right category and paste its **title** and **subtitle** from the page.
+2. Click **Copy article** on the page, click into the article body in HubSpot and press Ctrl+V
+   (Cmd+V on a Mac). The article arrives as formatted text: headings, lists, tables, links, bold and
+   code keep their formatting.
+3. Save, then preview before you publish.
 
-Paste into the source code view, not the visual editor, or HubSpot re-tags the markup.
+**Copy HTML** copies the raw markup instead, for an editor that has a Source code view.
 
 ## Layout
 
