@@ -116,7 +116,7 @@
   <li style="{{style:li}}"><strong>A timesheet belongs to a booked order line.</strong> <code style="{{style:code}}">sale_order_item</code> is the line's <code style="{{style:code}}">ln_</code> id with the prefix changed to <code style="{{style:code}}">soi_</code>, on a line that books a labour. Send times such as <code style="{{style:code}}">2026-11-09T09:00:00Z</code>.</li>
   <li style="{{style:li}}"><strong>Cancel and reactivate a labour with an empty JSON object.</strong> Cancel sets <code style="{{style:code}}">status</code> to <code style="{{style:code}}">inactive</code> and reactivate sets it to <code style="{{style:code}}">active</code>.</li>
   <li style="{{style:li}}"><strong>Teams and time periods are turned on and off through <code style="{{style:code}}">status</code>.</strong> Send <code style="{{style:code}}">active</code> or <code style="{{style:code}}">inactive</code> in an update. A time period's <code style="{{style:code}}">period</code> goes in upper case, such as <code style="{{style:code}}">MONTHLY</code>, and comes back in lower case.</li>
-  <li style="{{style:li}}"><strong>Milestones and departments are read only.</strong> These areas have no create, update or delete call, and a department listed with a null <code style="{{style:code}}">id</code> cannot be retrieved on its own.</li>
+  <li style="{{style:li}}"><strong>Milestones and departments are read only.</strong> These areas have no create, update or delete call.</li>
 </ul>
 
 <h2 style="{{style:h2}}">Related articles</h2>
